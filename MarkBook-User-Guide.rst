@@ -7,8 +7,8 @@ MarkBook用户手册(|version|)
 .. |date| date:: 2012-12-27
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
-.. publish:: YES
-.. |version| replace:: v0.2
+.. publish:: NO
+.. |version| replace:: v0.2.1
 
 欢迎使用MarkBook
 =================
@@ -34,7 +34,9 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 新建笔记
 ---------
 
-点窗口左下角”+“来新建一个笔记，新建时需要指定笔记格式，rst or md。
+键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记格式，rst or md。
+
+.. |new| image:: ../../../images/new.png
 
 注意如果稍后要通过jekyll发布的话，输入的笔记名称最好不要有中文。
 
@@ -67,7 +69,11 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 删除笔记
 ---------
 
-点击窗口左下角“-”来删除笔记。
+点击窗口上方标题栏中的图标 |delete| 来删除笔记。
+
+或者键入 **Delete** 来删除笔记。
+
+.. |delete| image:: ../../../images/delete.png
 
 偏好设置
 --------
@@ -81,27 +87,47 @@ MarkBook的主目录为~/.MarkBook，里面主要有如下内容：
 
 .. code-block:: console
 
-    $ tree ~/.MarkBook
-    MarkBook
+    $ tree .MarkBook
+    .MarkBook
+    ├── bin
+    │   └── mkldir
     ├── build
-    │   └── MyNotes
-    │       └── Sample
-    │           ├── welcome.rst.html
-    │           └── welcome.rst.png
-    └── source
-        └── MyNotes
-            └── Sample
-                └── welcome.rst
+    │   └── MyNotes.localized
+    │       └── Sample.localized
+    │           ├── MarkBook-User-Guide.rst.html
+    │           └── MarkBook-User-Guide.rst.png
+    ├── images
+    │   ├── delete.png
+    │   └── new.png
+    ├── source
+    │   ├── MyNotes.localized
+    │   │   └── Sample.localized
+    │   │       └── MarkBook-User-Guide.rst
+    │   └── blogs
+    │       └── my_blog
+    │           └── 2012-12-27-MarkBook-User-Guide.rst
+    └── style
+        ├── Reeder-Noise.png
+        └── default.css
 
-    6 directories, 3 files
-    
-其中build用来存放编译生成的html文件，source存放源文件。
+    11 directories, 9 files
+
+各文件/目录作用如下：
+
+* bin   常用命令
+* bin/mkldir 创建本地化目录(参看 博文_)
+* build 存放编译生成的HTML文件
+* images 存放文档中需要显示的图片
+* source    存放源文档
+* style HTML关联的CSS文件
+
+.. 博文_ http://
 
 source目录下有三层，第一层(MyNotes)是笔记本库，一般也是一个git库(MarkBook会忽略.git目录)。
 
 第二层(Sample)是笔记本，存放各种分类的笔记。
 
-第三层(welcome.rst)就是笔记，可以是.markdown或.md或.rst后缀。
+第三层(MarkBook-User-Guide.rst)就是笔记，可以是.markdown或.md或.rst后缀。
 
 凡是符合上述要求的都会被MarkBook识别，后台更新文件后MarkBook界面会自动同步更新。
 
@@ -134,9 +160,42 @@ File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可
 
 就会在 **~/.MarkBook/source/blogs/my_blog** 目录下创建 2012-08-31-my-first-blog.rst的博客文件，publish为NO时删除上述文件。
 
+本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，重启MarkBook，看看有什么？
+
 jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
 
 __ http://amoblin.github.com/2012/12/26/markbook-to-jekyll.html
+
+读书
+-----
+
+Git学习的经典著作Pro Git托管在GitHub上，以Creative Commons Attribution-Non Commercial-Share Alike 3.0 license发布。
+
+amoblin整理了Pro Git的源文件，使其符合MarkBook的3层目录规范，发布在GitHub上。
+
+.. code-block:: console
+
+    $ git clone git@github.com:amoblin/progit-for-markbook.git ~/.MarkBook/source
+
+重启MarkBook后，就可以拜读Pro Git了。
+
+更新本手册
+----------
+
+本文所在目录为一个git仓库，远程仓库地址为：
+
+.. code-block:: console
+
+    $ cd ~/.MarkBook/source/MyNotes.localized/markbook-doc
+    $ git remote -v
+    origin	git@github.com:amoblin/markbook-doc.git (fetch)
+    origin	git@github.com:amoblin/markbook-doc.git (push)
+
+获取更新：
+
+.. code-block:: console
+
+    $ git pull
 
 TODO
 ====
