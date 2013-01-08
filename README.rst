@@ -66,6 +66,13 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
         }
     }
 
+预览笔记
+---------
+
+右栏实时更新生成的HTML页面，若要同时浏览多个页面，点击 |open| 来用默认浏览器打开当前页面。
+
+.. |open| image:: ../../../source/MyNotes.localized/markbook-doc/images/open.png
+
 删除笔记
 ---------
 
@@ -78,7 +85,9 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 偏好设置
 --------
 
-按[ **Command + ,** ]打开偏好设置，选择喜欢的编辑器即可。
+点击 |config| 或 键入[ **Command + ,** ] 来打开偏好设置，选择喜欢的编辑器即可。
+
+.. |config| image:: ../../../source/MyNotes.localized/markbook-doc/images/config.png
 
 导入jekyll/Octopress博客
 -------------------------
