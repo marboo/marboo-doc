@@ -80,6 +80,34 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 按[ **Command + ,** ]打开偏好设置，选择喜欢的编辑器即可。
 
+导入jekyll/Octopress博客
+-------------------------
+
+File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可将该目录下的博客文章导入到MarkBook中。
+
+导入的操作是复制了一份，所以对导入的博客的修改不影响导入源。
+
+发布到jekyll/Octopress博客
+---------------------------
+
+由于amoblin主要使用rst来写文档，对rst比较熟悉，而md就不太熟悉，所以目前此功能仅支持rst格式。后续会加入md支持。
+
+如果在文件名为my-first-blog.rst的笔记中定义了如下内容：
+
+.. code-block:: rst
+
+    .. |date| date:: 2012-08-31
+    .. title:: 博客标题
+    .. publish:: YES
+
+就会在 **~/.MarkBook/source/blogs/my_blog** 目录下创建 2012-08-31-my-first-blog.rst的博客文件，publish为NO时删除上述文件。
+
+本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，重启MarkBook，看看有什么？
+
+jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
+
+__ http://amoblin.github.com/2012/12/26/markbook-to-jekyll.html
+
 for CLI User
 -------------
 
@@ -119,9 +147,14 @@ MarkBook的主目录为~/.MarkBook，里面主要有如下内容：
 * build 存放编译生成的HTML文件
 * images 存放文档中需要显示的图片
 * source    存放源文档
+* source/MyNotes.localized  本地化目录：我的笔记
+* source/blogs/my_blog  publish为YES时生成Jekyll风格文件至此
 * style HTML关联的CSS文件
 
-.. 博文_ http://
+.. _博文: http://amoblin.github.com
+
+三层目录规范
+-------------
 
 source目录下有三层，第一层(MyNotes)是笔记本库，一般也是一个git库(MarkBook会忽略.git目录)。
 
@@ -138,44 +171,16 @@ source目录下有三层，第一层(MyNotes)是笔记本库，一般也是一�
     :height: 300
     :target: https://markbook.googlecode.com/files/markbook.png
 
-导入jekyll/Octopress博客
--------------------------
-
-File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可将该目录下的博客文章导入到MarkBook中。
-
-导入的操作是复制了一份，所以对导入的博客的修改不影响导入源。
-
-发布到jekyll/Octopress博客
----------------------------
-
-由于amoblin主要使用rst来写文档，对rst比较熟悉，而md就不太熟悉，所以目前此功能仅支持rst格式。后续会加入md支持。
-
-如果在文件名为my-first-blog.rst的笔记中定义了如下内容：
-
-.. code-block:: rst
-
-    .. |date| date:: 2012-08-31
-    .. title:: 博客标题
-    .. publish:: YES
-
-就会在 **~/.MarkBook/source/blogs/my_blog** 目录下创建 2012-08-31-my-first-blog.rst的博客文件，publish为NO时删除上述文件。
-
-本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，重启MarkBook，看看有什么？
-
-jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
-
-__ http://amoblin.github.com/2012/12/26/markbook-to-jekyll.html
-
-读书
------
+Pro Git
+---------
 
 Git学习的经典著作Pro Git托管在GitHub上，以Creative Commons Attribution-Non Commercial-Share Alike 3.0 license发布。
 
-amoblin整理了Pro Git的源文件，使其符合MarkBook的3层目录规范，发布在GitHub上。
+amoblin整理了Pro Git的源文件，使其符合MarkBook的 三层目录规范_ ，发布在GitHub上。
 
 .. code-block:: console
 
-    $ git clone git@github.com:amoblin/progit-for-markbook.git ~/.MarkBook/source
+    $ git clone git@github.com:amoblin/progit-for-markbook.git ~/.MarkBook/source/progit-for-markbook
 
 重启MarkBook后，就可以拜读Pro Git了。
 
@@ -197,8 +202,22 @@ amoblin整理了Pro Git的源文件，使其符合MarkBook的3层目录规范，
 
     $ git pull
 
+更新本软件
+-----------
+
+菜单项：MarkBook -> Check for updates..
+
+或者至 MarkBook的下载页_
+
+.. _MarkBook的下载页: http://code.google.com/p/markbook/downloads/list
+
 TODO
 ====
+
+multi markup support
+----------------------
+
+通过插件形式支持更多的置标语言。
 
 Git UI
 -------
