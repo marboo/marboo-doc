@@ -8,7 +8,7 @@ MarkBook用户手册(|version|)
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.2.1
+.. |version| replace:: v0.2.3
 
 欢迎使用MarkBook
 =================
@@ -18,9 +18,20 @@ MarkBook用户手册(|version|)
 MarkBook是什么？
 ================
 
-MarkBook是用来管理置标语言文件的，目前支持reStructuredText和Markdown文件，后续会加入Ascii，wiki等的支持。
+MarkBook是用来管理置标语言文件的，目前支持的格式有下面几种：
 
-通过像类似Evernote的界面来管理，组织Markup文件，实时更新显示HTML输出页面。
+笔记格式
+---------
+
+* reStructuredText
+* Markdown
+* HTML5 (use `twitter bootstrap`_)
+
+.. _`twitter bootstrap`: http://twitter.github.com/bootstrap/
+  
+后续会加入Ascii，Wiki等的支持。
+
+通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织Markup文件，实时更新显示HTML输出页面。
 
 自动发布博客到Jekyll/Octopress站点。
 
@@ -34,7 +45,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 新建笔记
 ---------
 
-键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记格式，rst or md。
+键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定 笔记格式_
 
 .. |new| image:: ../../../images/new.png
 
@@ -71,7 +82,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 右栏实时更新生成的HTML页面，若要同时浏览多个页面，点击 |open| 来用默认浏览器打开当前页面。
 
-.. |open| image:: ../../../source/MyNotes.localized/markbook-doc/images/open.png
+.. |open| image:: ../../../images/open.png
 
 删除笔记
 ---------
@@ -87,7 +98,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 点击 |config| 或 键入[ **Command + ,** ] 来打开偏好设置，选择喜欢的编辑器即可。
 
-.. |config| image:: ../../../source/MyNotes.localized/markbook-doc/images/config.png
+.. |config| image:: ../../../images/config.png
 
 导入jekyll/Octopress博客
 -------------------------
@@ -124,41 +135,52 @@ MarkBook的主目录为~/.MarkBook，里面主要有如下内容：
 
 .. code-block:: console
 
-    $ tree .MarkBook
     .MarkBook
     ├── bin
     │   └── mkldir
+    ├── bootstrap
+    │   ├── css
+    │   │   ├── bootstrap-responsive.css
+    │   │   ├── bootstrap-responsive.min.css
+    │   │   ├── bootstrap.css
+    │   │   └── bootstrap.min.css
+    │   ├── img
+    │   │   ├── glyphicons-halflings-white.png
+    │   │   └── glyphicons-halflings.png
+    │   └── js
+    │       ├── bootstrap.js
+    │       └── bootstrap.min.js
     ├── build
     │   └── MyNotes.localized
-    │       └── Sample.localized
-    │           ├── MarkBook-User-Guide.rst.html
-    │           └── MarkBook-User-Guide.rst.png
+    │       └── markbook-doc
+    │           ├── README.rst.html
+    │           └── README.rst.png
     ├── images
+    │   ├── config.png
     │   ├── delete.png
-    │   └── new.png
+    │   ├── new.png
+    │   └── open.png
     ├── source
-    │   ├── MyNotes.localized
-    │   │   └── Sample.localized
-    │   │       └── MarkBook-User-Guide.rst
-    │   └── blogs
-    │       └── my_blog
-    │           └── 2012-12-27-MarkBook-User-Guide.rst
+    │   └── MyNotes.localized
+    │       └── markbook-doc
+    │           └── README.rst
     └── style
         ├── Reeder-Noise.png
         └── default.css
 
-    11 directories, 9 files
+    13 directories, 18 files
 
 各文件/目录作用如下：
 
 * bin   常用命令
 * bin/mkldir 创建本地化目录(参看 博文_)
+* bootstrap twitter-bootstrap
 * build 存放编译生成的HTML文件
 * images 存放文档中需要显示的图片
-* source    存放源文档
+* source    存放源文档 **切记保存好**
 * source/MyNotes.localized  本地化目录：我的笔记
-* source/blogs/my_blog  publish为YES时生成Jekyll风格文件至此
-* style HTML关联的CSS文件
+* source/blogs/my_blog   publish为YES时生成Jekyll风格文件至此
+* style                  rst2html.py中style-template的参数
 
 .. _博文: http://amoblin.github.com
 
