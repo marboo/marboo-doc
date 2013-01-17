@@ -8,7 +8,7 @@ MarkBook用户手册(|version|)
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.2.3
+.. |version| replace:: v0.2.4
 
 欢迎使用MarkBook
 =================
@@ -18,7 +18,7 @@ MarkBook用户手册(|version|)
 MarkBook是什么？
 ================
 
-MarkBook是用来管理置标语言文件的，目前支持的格式有下面几种：
+MarkBook是用来管理置标语言文件的，内置支持格式有如下几种：
 
 笔记格式
 ---------
@@ -27,10 +27,16 @@ MarkBook是用来管理置标语言文件的，目前支持的格式有下面几
 * Markdown
 * HTML5 (use `twitter bootstrap`_)
 
+通过插件可以支持任意一种置标语言，包括但不限于：
+
+* AsciiDoc
+* Wiki
+* TextTile
+
+此外，还通过管理CSS和图片来实现Theme样式。
+
 .. _`twitter bootstrap`: http://twitter.github.com/bootstrap/
   
-后续会加入Ascii，Wiki等的支持。
-
 通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织Markup文件，实时更新显示HTML输出页面。
 
 自动发布博客到Jekyll/Octopress站点。
@@ -47,7 +53,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定 笔记格式_
 
-.. |new| image:: ../../../images/new.png
+.. |new| image:: ../../media/images/markbook-icon-new.png
 
 注意如果稍后要通过jekyll发布的话，输入的笔记名称最好不要有中文。
 
@@ -82,23 +88,44 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 右栏实时更新生成的HTML页面，若要同时浏览多个页面，点击 |open| 来用默认浏览器打开当前页面。
 
-.. |open| image:: ../../../images/open.png
+.. |open| image:: ../../media/images/markbook-icon-open.png
 
 删除笔记
 ---------
 
-点击窗口上方标题栏中的图标 |delete| 来删除笔记。
+点击窗口上方标题栏中的图标 |delete| 或者右键调出菜单选择"删除"来删除笔记。
 
 或者键入 **Delete** 来删除笔记。
 
-.. |delete| image:: ../../../images/delete.png
+.. |delete| image:: ../../media/images/markbook-icon-delete.png
 
 偏好设置
 --------
 
 点击 |config| 或 键入[ **Command + ,** ] 来打开偏好设置，选择喜欢的编辑器即可。
 
-.. |config| image:: ../../../images/config.png
+.. |config| image:: ../../media/images/markbook-icon-config.png
+
+编辑theme
+----------
+
+点击 |theme| 来打开关联的css文件，通过修改css内容来控制所有笔记的外观。
+
+.. |theme| image:: ../../media/images/markbook-icon-theme.png
+
+在Finder中打开
+---------------
+
+双击左栏目录，会在Finder中显示该目录。
+
+管理图片
+---------
+
+写MarkDown或RST的同学是不是觉得载入图片的语法太麻烦了？使用MarkBook，一切就这么煎蛋：
+
+#. 双击左栏media下bg-images或images目录，复制文件进去
+#. 在中栏找到图片，右键选择"复制该文件路径"
+#. 粘贴到css或markdown文件中
 
 导入jekyll/Octopress博客
 -------------------------
@@ -197,7 +224,7 @@ source目录下有三层，第一层(MyNotes)是笔记本库，一般也是一�
 
 下面是我的笔记，仅供参考：
 
-.. image:: https://markbook.googlecode.com/files/markbook.png
+.. image:: ..
     :width: 500
     :height: 300
     :target: https://markbook.googlecode.com/files/markbook.png
