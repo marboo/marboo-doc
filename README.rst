@@ -8,26 +8,31 @@ MarkBook用户手册(|version|)
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.2.4
+.. |version| replace:: v0.3
 
 欢迎使用MarkBook
 =================
 
 欢迎您使用MarkBook，目前版本为 |version|
 
+如果本手册中图片不能显示，请检查软件是否为最新版本（更新本软件_ ）
+
+如果是最新版本仍出现上述问题，请联系 <amoblin amoblin@gmail.com>
+
 MarkBook是什么？
 ================
 
-MarkBook是用来管理置标语言文件的，内置支持格式有如下几种：
-
-笔记格式
----------
+MarkBook是用来管理置标语言文档及其相关资源的，内置支持格式有如下几种：
 
 * reStructuredText
 * Markdown
-* HTML5 (use `twitter bootstrap`_)
+* HTML (use `twitter bootstrap`_)
+* css
+* javascript
+* png, jpg, gif
+* shell
 
-通过插件可以支持任意一种置标语言，包括但不限于：
+通过 `增加笔记格式`_ 可以支持任意一种置标语言，包括但不限于：
 
 * AsciiDoc
 * Wiki
@@ -41,19 +46,69 @@ MarkBook是用来管理置标语言文件的，内置支持格式有如下几种
 
 自动发布博客到Jekyll/Octopress站点。
 
-关于MarkBook的创作理念，可以看我的 `这篇文章`__
+创作理念
+=========
+
+* KISS
+
+    KISS: Keep It Small and Simple
+
+    MarkBook只负责显示最终效果，其他的功能像编辑，生成HTML等都可以通过配置来调用程序完成，甚至像增加文件夹这样的操作都是调用Finder来实现的。
+
+* 内容和排版分离
+
+  markdown等适合写内容，css适合排版。下面是一个markdown文件
+
+.. code-block:: markdown
+
+    # Twinkle Twinkle Little Star
+    ## by Jane Taylor, 1806
+
+    Twinkle, twinkle, little star,<br/>
+    How I wonder what you are!<br/>
+    Up above the world so high,<br/>
+    Like a diamond in the sky!<br/>
+
+    When the blazing sun is gone,<br/>
+    When he nothing shines upon,<br/>
+    Then you show your little light,<br/>
+    Twinkle, twinkle, all the night.<br/>
+
+    Then the traveller in the dark,<br/>
+    Thanks you for your tiny spark,<br/>
+    He could not see which way to go,<br/>
+    If you did not twinkle so.<br/>
+
+    In the dark blue sky you keep,<br/>
+    And often through my curtains peep,<br/>
+    For you never shut your eye,<br/>
+    Till the sun is in the sky.<br/>
+
+    As your bright and tiny spark,<br/>
+    Lights the traveller in the dark,—<br/>
+    Though I know not what you are,<br/>
+    Twinkle, twinkle, little star.<br/>
+
+最终的展示效果如下：
+
+.. image:: /media/images/markbook-poem.png
+
+关于MarkBook的创作理念，还可以看我的 `这篇文章`__
 
 __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 使用MarkBook
 =============
 
+笔记管理
+**********
+
 新建笔记
 ---------
 
-键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定 笔记格式_
+键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记类型。
 
-.. |new| image:: ../../media/images/markbook-icon-new.png
+.. |new| image:: /media/images/markbook-icon-new.png
 
 注意如果稍后要通过jekyll发布的话，输入的笔记名称最好不要有中文。
 
@@ -62,7 +117,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 编辑笔记
 --------
 
-双击中栏笔记缩略图，会启动关联的外部编辑器(参见 偏好设置_)来编辑笔记。保存修改后，MarkBook会同步更新内容。
+双击中栏笔记缩略图，会启动关联的外部编辑器(参见 设置默认编辑器_ )来编辑笔记。保存修改后，MarkBook会同步更新内容。
 
 下面是c代码样例：
 
@@ -88,7 +143,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 右栏实时更新生成的HTML页面，若要同时浏览多个页面，点击 |open| 来用默认浏览器打开当前页面。
 
-.. |open| image:: ../../media/images/markbook-icon-open.png
+.. |open| image:: /media/images/markbook-icon-open.png
 
 删除笔记
 ---------
@@ -97,42 +152,57 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 或者键入 **Delete** 来删除笔记。
 
-.. |delete| image:: ../../media/images/markbook-icon-delete.png
+.. |delete| image:: /media/images/markbook-icon-delete.png
 
-偏好设置
---------
+
+增加笔记本
+-----------
+
+双击左栏目录，会在Finder中显示该目录，然后创建文件夹即可，注意须遵循 三层目录规范_
+
+MarkBook偏好设置
+******************
+
+设置默认编辑器
+---------------
 
 点击 |config| 或 键入[ **Command + ,** ] 来打开偏好设置，选择喜欢的编辑器即可。
 
-.. |config| image:: ../../media/images/markbook-icon-config.png
+.. |config| image:: /media/images/markbook-icon-config.png
 
-编辑theme
+修改主题
 ----------
 
 点击 |theme| 来打开关联的css文件，通过修改css内容来控制所有笔记的外观。
 
-.. |theme| image:: ../../media/images/markbook-icon-theme.png
+.. |theme| image:: /media/images/markbook-icon-theme.png
 
-在Finder中打开
----------------
-
-双击左栏目录，会在Finder中显示该目录。
-
-管理图片
+添加图片
 ---------
 
-写MarkDown或RST的同学是不是觉得载入图片的语法太麻烦了？使用MarkBook，一切就这么煎蛋：
+写MarkDown或RST的同学是不是觉得载入图片的语法太麻烦了？使用MarkBook，一切就这么简单：
 
 #. 双击左栏media下bg-images或images目录，复制文件进去
 #. 在中栏找到图片，右键选择"复制该文件路径"
-#. 粘贴到css或markdown文件中
+#. 粘贴到css或markdown文件中即可
+
+Evernote相关
+****************
+
+导入Evernote笔记
+------------------
+
+目前仅支持将Evernote笔记导出为HTML然后导入MarkBook。
+
+Evernote菜单中选择 文件->导出所有笔记，保存格式为HTML，然后参照上一条导入。
+
+Jekyll/Octopress相关
+*********************
 
 导入jekyll/Octopress博客
 -------------------------
 
 File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可将该目录下的博客文章导入到MarkBook中。
-
-导入的操作是复制了一份，所以对导入的博客的修改不影响导入源。
 
 发布到jekyll/Octopress博客
 ---------------------------
@@ -149,85 +219,14 @@ File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可
 
 就会在 **~/.MarkBook/source/blogs/my_blog** 目录下创建 2012-08-31-my-first-blog.rst的博客文件，publish为NO时删除上述文件。
 
-本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，重启MarkBook，看看有什么？
+本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，点blogs/my_blog看看，是不是出现了？
 
 jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
 
 __ http://amoblin.github.com/2012/12/26/markbook-to-jekyll.html
 
-for CLI User
--------------
-
-MarkBook的主目录为~/.MarkBook，里面主要有如下内容：
-
-.. code-block:: console
-
-    .MarkBook
-    ├── bin
-    │   └── mkldir
-    ├── bootstrap
-    │   ├── css
-    │   │   ├── bootstrap-responsive.css
-    │   │   ├── bootstrap-responsive.min.css
-    │   │   ├── bootstrap.css
-    │   │   └── bootstrap.min.css
-    │   ├── img
-    │   │   ├── glyphicons-halflings-white.png
-    │   │   └── glyphicons-halflings.png
-    │   └── js
-    │       ├── bootstrap.js
-    │       └── bootstrap.min.js
-    ├── build
-    │   └── MyNotes.localized
-    │       └── markbook-doc
-    │           ├── README.rst.html
-    │           └── README.rst.png
-    ├── images
-    │   ├── config.png
-    │   ├── delete.png
-    │   ├── new.png
-    │   └── open.png
-    ├── source
-    │   └── MyNotes.localized
-    │       └── markbook-doc
-    │           └── README.rst
-    └── style
-        ├── Reeder-Noise.png
-        └── default.css
-
-    13 directories, 18 files
-
-各文件/目录作用如下：
-
-* bin   常用命令
-* bin/mkldir 创建本地化目录(参看 博文_)
-* bootstrap twitter-bootstrap
-* build 存放编译生成的HTML文件
-* images 存放文档中需要显示的图片
-* source    存放源文档 **切记保存好**
-* source/MyNotes.localized  本地化目录：我的笔记
-* source/blogs/my_blog   publish为YES时生成Jekyll风格文件至此
-* style                  rst2html.py中style-template的参数
-
-.. _博文: http://amoblin.github.com
-
-三层目录规范
--------------
-
-source目录下有三层，第一层(MyNotes)是笔记本库，一般也是一个git库(MarkBook会忽略.git目录)。
-
-第二层(Sample)是笔记本，存放各种分类的笔记。
-
-第三层(MarkBook-User-Guide.rst)就是笔记，可以是.markdown或.md或.rst后缀。
-
-凡是符合上述要求的都会被MarkBook识别，后台更新文件后MarkBook界面会自动同步更新。
-
-下面是我的笔记，仅供参考：
-
-.. image:: ..
-    :width: 500
-    :height: 300
-    :target: https://markbook.googlecode.com/files/markbook.png
+读书
+******
 
 Pro Git
 ---------
@@ -242,8 +241,178 @@ amoblin整理了Pro Git的源文件，使其符合MarkBook的 三层目录规范
 
 重启MarkBook后，就可以拜读Pro Git了。
 
+MarkBook目录组织
+=================
+
+MarkBook的主目录为~/.MarkBook，下面有2个目录：
+
+* build         用来存放生成的HTML文件
+* source        源文件
+
+source目录
+***********
+
+source目录下3层之内(包括第三层)的目录/文件都会被MarkBook管理。
+
+三层目录规范
+--------------
+
+source目录下有三层：
+
+第一层(MyNotes.localized)是笔记本库，一般也是一个git库(MarkBook会忽略.git目录)。
+
+第二层(markbook-doc)是笔记本，存放各种分类的笔记。
+
+第三层(README.rst)是笔记
+
+凡是符合上述要求的文件/目录都会被MarkBook识别，source目录下的任何改变都会被MarkBook捕获，从而更新UI。
+
+典型的3层目录树结构如下：
+
+.. code-block:: console
+
+    source
+    └── MyNotes.localized
+        └── markbook-doc
+            └── README.rst
+
+media目录
+-----------
+
+source目录下默认有一个名为media的目录，MarkBook的主题样式表，初始化文件模板等存放在这里。
+
+.. code-block:: console
+
+    $ ls media
+    bg-images  bin        css        file_types images     templates
+
+* bg-images     背景图片
+* bin           生成html的脚本
+* css           存放主题样式表
+* file_types    存放初始化文件模板
+* images        存放笔记文档中的图片
+* templates     生成html后外嵌HTML模板
+
+其中 bin/mkldir 是用来创建本地化目录的脚本，上面的MyNotes.localized正是用此创建。(参看 Mac下创建本地化目录_)
+
+build目录
+**********
+
+存放source目录生成的HTML等文件，结构上基本和source保持一致，但多出来一个bootstrap目录。
+
+这个bootstrap就是著名的twitter bootstrap，MarkBook在引入HTML笔记支持时选择了twitter bootstrap。
+
+.. _Mac下创建本地化目录: http://amoblin.github.com/2013/01/10/create-localized-directory-on-os-x.html
+
+MarkBook进阶
+=============
+
+MarkBook将特定版式的笔记通过二级后缀名来归类，比如
+
+* 我的日记.diary.md     版式为diary的markdown格式笔记
+* 志摩的诗.poetry.md    版式为poetry的markdown格式笔记
+
+这样虽然同为markdown文件，使用同一个generator，但是可以在初始化的时候，和最终生成HTM的时候，采取不同的行为。
+
+修改初始化文件内容
+*******************
+
+在 新建笔记_ 时，输入笔记名，点 ‘创建’ 后会生成一个笔记，打开笔记会发现里面已经有内容了，这些内容就是从 media/file_types下的文件初始化而来的。
+
+.. code-block:: console
+
+    $ ls file_types
+    default.html default.md   default.rst  poetry.md
+
+默认版式的笔记会使用default版式，而特定版式的笔记会使用对应版式名的文件。
+
+比如新建一个 名为 new.peotry 的MarkDown文件，会使用 poetry.md文件来初始化内容。
+
+通过在此目录添加文件来增加版式。
+
+目前还不支持增加新格式(新格式文件只能自己通过其他途径自己创建)。
+
+rst文件初始化
+-------------
+
+默认的rst文件初始化内容如下
+
+.. code-block:: rst
+
+    %@
+    %@
+    %@
+
+    .. Author: your_name
+    .. title:: 可以是中文名
+    .. |date| date:: %@
+    .. publish:: NO
+
+参数用 "%@"表示， 一共4个参数。
+
+* 第2个参数是笔记名
+* 第1个和第3个是根据笔记名计算出来的 ‘=’
+* 第4个参数是当前日期，主要用于生成jekyll格式的文件名。
+
+md文件初始化
+-------------
+
+.. code-block:: markdown
+
+    %@
+    %@
+
+第一个参数是笔记名，第二个是创建时间。
+
+html文件初始化
+---------------
+
+这个比较长，不在这里写了，可以打开 media/file_types下的default.html来看。
+
+3个参数：第一个是笔记名，第二个是创建时间，第三个还是笔记名。
+
+增加笔记格式
+***************
+
+在 **media/bin** 下。
+
+对MarkBook没有内置的格式，可以在 media/bin 下编写shell脚本来增加支持。
+
+MarkBook内置对markdown，rst的支持，但如果该目录下也有，会优先使用该目录下的脚本来生成。
+
+比如下面的markdown.sh脚本，在生成的html末尾加上了一行文字：
+
+.. code-block:: console
+
+    #!/bin/sh
+    echo "`/usr/local/bin/markdown $1` <br/> generated by markdown.sh"
+
+这样，后缀为markdown.sh的文件，生成的html页面下面都会有这一行文字。
+
+也可以用二级版式来对特定版式的笔记做特定转化。
+
+脚本输入输入接口规范
+-----------------------
+
+输入：1个参数，为源文件路径
+输出：到标准输出，为HTML内容
+
+MarkBook通过管道获取脚本的输出来做进一步加工，所以请确保脚本一定要输出内容。
+
+修改笔记HTML模板
+*****************
+
+通过标准markdown生成的html文件是只有内容的，并没有html的外部框架，所以通过模板进行包装，从而能够应用css主题。
+
+可以点 media/templates/md.html 来看默认的Markdown文件的html模板。
+
+poetry版式的markdown格式笔记，它的模板为poetry.md.html。
+
+更新
+=====
+
 更新本手册
-----------
+**********
 
 本文所在目录为一个git仓库，远程仓库地址为：
 
@@ -261,7 +430,7 @@ amoblin整理了Pro Git的源文件，使其符合MarkBook的 三层目录规范
     $ git pull
 
 更新本软件
------------
+***********
 
 菜单项：MarkBook -> Check for updates..
 
@@ -272,17 +441,12 @@ amoblin整理了Pro Git的源文件，使其符合MarkBook的 三层目录规范
 TODO
 ====
 
-multi markup support
-----------------------
-
-通过插件形式支持更多的置标语言。
-
 Git UI
--------
+********
 
 像Xcode一样显示文件状态，同时添加git pull，git push按钮。
 
-markdown版欢迎页
-----------------
+HTML转Markdown
+****************
 
-由于amoblin一直用rst，不熟悉markdown，所以本说明文档是rst格式的，希望有擅长markdown者写一篇markdown版的，不胜感激。
+这样导入的Evernote笔记就可以编辑了。
