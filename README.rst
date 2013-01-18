@@ -112,7 +112,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 注意如果稍后要通过jekyll发布的话，输入的笔记名称最好不要有中文。
 
-因为输入的名字会生成文件名，jekyll对中文文件名的支持不是很好。
+因为输入的名字会生成文件名，jekyll对中文文件名的支持不太好。
 
 编辑笔记
 --------
@@ -182,7 +182,7 @@ MarkBook偏好设置
 
 写MarkDown或RST的同学是不是觉得载入图片的语法太麻烦了？使用MarkBook，一切就这么简单：
 
-#. 双击左栏media下bg-images或images目录，复制文件进去
+#. 双击左栏media文件夹下的bg-images或images目录，复制文件进去
 #. 在中栏找到图片，右键选择"复制该文件路径"
 #. 粘贴到css或markdown文件中即可
 
@@ -192,9 +192,12 @@ Evernote相关
 导入Evernote笔记
 ------------------
 
-目前仅支持将Evernote笔记导出为HTML然后导入MarkBook。
+支持将Evernote笔记导出的HTML导入MarkBook。
 
-Evernote菜单中选择 文件->导出所有笔记，保存格式为HTML，然后参照上一条导入。
+#. Evernote菜单中选择 文件->导出所有笔记，保存格式为HTML
+#. File -> Import Notes...，选中从Evernote中导出的文件夹，点击 open 导入
+
+如果要导入的文件比较多可能需要等待一些时间。
 
 Jekyll/Octopress相关
 *********************
@@ -219,7 +222,7 @@ File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可
 
 就会在 **~/.MarkBook/source/blogs/my_blog** 目录下创建 2012-08-31-my-first-blog.rst的博客文件，publish为NO时删除上述文件。
 
-本文第10行正式定义publish之处，现在值为NO，你可以试着修改为YES，保存，点blogs/my_blog看看，是不是出现了？
+本文rst源文件第10行正是定义publish之处，现在值为NO，你可以试着修改为YES，保存，然后点blogs/my_blog看看，是不是出现了？
 
 jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
 
@@ -261,11 +264,11 @@ source目录下有三层：
 
 第一层(MyNotes.localized)是笔记本库，一般也是一个git库(MarkBook会忽略.git目录)。
 
-第二层(markbook-doc)是笔记本，存放各种分类的笔记。
+第二层(markbook-doc)是笔记本，用于存放各种分类的笔记。
 
 第三层(README.rst)是笔记
 
-凡是符合上述要求的文件/目录都会被MarkBook识别，source目录下的任何改变都会被MarkBook捕获，从而更新UI。
+凡是符合上述要求的文件/目录都会被MarkBook识别，source目录下的任何改变都会被MarkBook捕获，从而更新用户界面。
 
 典型的3层目录树结构如下：
 
@@ -279,7 +282,7 @@ source目录下有三层：
 media目录
 -----------
 
-source目录下默认有一个名为media的目录，MarkBook的主题样式表，初始化文件模板等存放在这里。
+source目录下默认有一个名为media的目录，MarkBook的主题样式表、初始化文件模板等存放在这里。
 
 .. code-block:: console
 
@@ -307,26 +310,30 @@ build目录
 MarkBook进阶
 =============
 
-MarkBook将特定版式的笔记通过二级后缀名来归类，比如
+MarkBook通过CSS来控制笔记的显示效果。
+
+可以配置不同内容的CSS来生成不同的显示版式。相同显示版式的笔记使用相同的二级后缀名，比如
 
 * 我的日记.diary.md     版式为diary的markdown格式笔记
 * 志摩的诗.poetry.md    版式为poetry的markdown格式笔记
 
-这样虽然同为markdown文件，使用同一个generator，但是可以在初始化的时候，和最终生成HTM的时候，采取不同的行为。
+这样虽然同为markdown文件，使用同一个HTML生成器，但是可以在初始化和最终生成HTML的时候，采取不同的行为。
 
 修改初始化文件内容
 *******************
 
-在 新建笔记_ 时，输入笔记名，点 ‘创建’ 后会生成一个笔记，打开笔记会发现里面已经有内容了，这些内容就是从 media/file_types下的文件初始化而来的。
+在 新建笔记_ 时，输入笔记名，点击 ‘创建’ 后会生成一个笔记，打开笔记会发现里面已经有内容了，这些内容就是从 media/file_types目录下的文件初始化而来的。
+
+该目录结构如下：
 
 .. code-block:: console
 
     $ ls file_types
     default.html default.md   default.rst  poetry.md
 
-默认版式的笔记会使用default版式，而特定版式的笔记会使用对应版式名的文件。
+默认版式的笔记会使用名为default的同格式文件来初始化，而特定版式的笔记会使用对应版式名的同格式文件来初始化。
 
-比如新建一个 名为 new.peotry 的MarkDown文件，会使用 poetry.md文件来初始化内容。
+比如新建一个笔记名为 new.peotry 的MarkDown格式笔记，会使用 poetry.md文件来初始化内容。
 
 通过在此目录添加文件来增加版式。
 
@@ -351,7 +358,7 @@ rst文件初始化
 参数用 "%@"表示， 一共4个参数。
 
 * 第2个参数是笔记名
-* 第1个和第3个是根据笔记名计算出来的 ‘=’
+* 第1个和第3个是根据笔记名计算出来的 ‘=’ (RST语法要求)
 * 第4个参数是当前日期，主要用于生成jekyll格式的文件名。
 
 md文件初始化
@@ -362,23 +369,22 @@ md文件初始化
     %@
     %@
 
-第一个参数是笔记名，第二个是创建时间。
+* 第1个参数是笔记名
+* 第2个是创建时间。
 
 html文件初始化
 ---------------
 
 这个比较长，不在这里写了，可以打开 media/file_types下的default.html来看。
 
-3个参数：第一个是笔记名，第二个是创建时间，第三个还是笔记名。
+3个参数：第1个是笔记名，第2个是创建时间，第3个还是笔记名。
 
 增加笔记格式
 ***************
 
-在 **media/bin** 下。
-
 对MarkBook没有内置的格式，可以在 media/bin 下编写shell脚本来增加支持。
 
-MarkBook内置对markdown，rst的支持，但如果该目录下也有，会优先使用该目录下的脚本来生成。
+MarkBook内置对markdown、rst的支持，但如果该目录下也有对应的HTML生成器，会优先使用该生成器来生成。
 
 比如下面的markdown.sh脚本，在生成的html末尾加上了一行文字：
 
@@ -392,7 +398,7 @@ MarkBook内置对markdown，rst的支持，但如果该目录下也有，会优�
 也可以用二级版式来对特定版式的笔记做特定转化。
 
 脚本输入输入接口规范
------------------------
+---------------------
 
 输入：1个参数，为源文件路径
 输出：到标准输出，为HTML内容
