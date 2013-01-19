@@ -154,6 +154,10 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 
 .. |delete| image:: /media/images/markbook-icon-delete.png
 
+刷新笔记缩略图
+---------------
+
+有时中栏缩略图可能显示为空白，或者是旧主题，这时可以右键点击缩略图，选 “刷新”。
 
 增加笔记本
 -----------
