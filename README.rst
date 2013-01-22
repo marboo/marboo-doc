@@ -188,6 +188,13 @@ MarkBook偏好设置
 
 写MarkDown或RST的同学是不是觉得载入图片的语法太麻烦了？使用MarkBook，一切就这么简单：
 
+#. 点击 |import-images| 来选择添加图片
+#. 在编辑器中粘贴系统剪切板内容
+
+.. |import-images| image:: /media/images/markbook-icon-import-images.png
+
+也可以这样：
+
 #. 双击左栏media文件夹下的bg-images或images目录，复制文件进去
 #. 在中栏找到图片，右键选择"复制该文件路径"
 #. 粘贴到css或markdown文件中即可
