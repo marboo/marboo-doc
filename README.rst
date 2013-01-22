@@ -8,7 +8,7 @@ MarkBook用户手册(|version|)
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.3
+.. |version| replace:: v0.3.2
 
 欢迎使用MarkBook
 =================
@@ -17,7 +17,7 @@ MarkBook用户手册(|version|)
 
 如果本手册中图片不能显示，请检查软件是否为最新版本（更新本软件_ ）
 
-如果是最新版本仍出现上述问题，请联系 <amoblin amoblin@gmail.com>
+如果是最新版本仍出现上述问题，请联系 amoblin@gmail.com
 
 MarkBook是什么？
 ================
@@ -45,6 +45,8 @@ MarkBook是用来管理置标语言文档及其相关资源的，内置支持格
 通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织Markup文件，实时更新显示HTML输出页面。
 
 自动发布博客到Jekyll/Octopress站点。
+
+程序代码文件高亮显示。
 
 创作理念
 =========
@@ -95,7 +97,7 @@ MarkBook是用来管理置标语言文档及其相关资源的，内置支持格
 
 关于MarkBook的创作理念，还可以看我的 `这篇文章`__
 
-__ http://amoblin.github.com/2012/12/25/MarkBook-release.html
+__ http://amoblin.farbox.com/2012/12/25/MarkBook-release.html
 
 使用MarkBook
 =============
@@ -106,7 +108,7 @@ __ http://amoblin.github.com/2012/12/25/MarkBook-release.html
 新建笔记
 ---------
 
-键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记类型。
+键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记类型（自定义类型见 管理代码_ ）。
 
 .. |new| image:: /media/images/markbook-icon-new.png
 
@@ -230,7 +232,7 @@ File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可
 
 jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
 
-__ http://amoblin.github.com/2012/12/26/markbook-to-jekyll.html
+__ http://amoblin.farbox.com/2012/12/26/markbook-to-jekyll.html
 
 读书
 ******
@@ -247,6 +249,24 @@ amoblin整理了Pro Git的源文件，使其符合MarkBook的 三层目录规范
     $ git clone git@github.com:amoblin/progit-for-markbook.git ~/.MarkBook/source/progit-for-markbook
 
 重启MarkBook后，就可以拜读Pro Git了。
+
+写WEB页面
+**********
+
+MarkBook的 主页_ 就是借助它实现的，有图为证：
+
+.. image:: /media/images/markbook-self-generate.png
+
+.. _主页: http://markbook.farbox.com/
+
+管理代码
+*********
+
+新建笔记，笔记标题输入程序名，比如hello.py，笔记类型选择最下面的“自定义”，这样生成的文件就不会再添加额外的后缀名了。
+
+粘贴代码进去，保存，MarkBook会高亮显示代码。
+
+如果显示内容为：Unknown type of file: [filename]。那么说明MarkBook不能识别文件的MIME类型。
 
 MarkBook目录组织
 =================
@@ -309,7 +329,7 @@ build目录
 
 这个bootstrap就是著名的twitter bootstrap，MarkBook在引入HTML笔记支持时选择了twitter bootstrap。
 
-.. _Mac下创建本地化目录: http://amoblin.github.com/2013/01/10/create-localized-directory-on-os-x.html
+.. _Mac下创建本地化目录: http://amoblin.farbox.com/2013/01/10/create-localized-directory-on-os-x.html
 
 MarkBook进阶
 =============
@@ -412,11 +432,18 @@ MarkBook通过管道获取脚本的输出来做进一步加工，所以请确保
 修改笔记HTML模板
 *****************
 
+在 media/templates 下保存文件输出模板。
+
 通过标准markdown生成的html文件是只有内容的，并没有html的外部框架，所以通过模板进行包装，从而能够应用css主题。
 
-可以点 media/templates/md.html 来看默认的Markdown文件的html模板。
+默认有下面3个模板文件：
 
-poetry版式的markdown格式笔记，它的模板为poetry.md.html。
+* md.html
+    \*.md 笔记的输出模板
+* poetry.md.html
+    \*.peotry.md 笔记的输出模板
+* pygmentize.html
+    程序文件的输出模板
 
 更新
 =====
