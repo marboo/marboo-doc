@@ -102,6 +102,10 @@ __ http://amoblin.farbox.com/2012/12/25/MarkBook-release.html
 使用MarkBook
 =============
 
+首先通过Gallery看一下各种创意用法吧：`MarkBook Gallery`_
+
+.. _`MarkBook Gallery`: http://markbook.farbox.com/gallery/
+
 笔记管理
 **********
 
