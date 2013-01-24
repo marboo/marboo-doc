@@ -8,7 +8,7 @@ MarkBook用户手册(|version|)
 .. title:: 欢迎使用MarkBook
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.3.2
+.. |version| replace:: v0.4
 
 欢迎使用MarkBook
 =================
@@ -44,7 +44,7 @@ MarkBook是用来管理置标语言文档及其相关资源的，内置支持格
   
 通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织Markup文件，实时更新显示HTML输出页面。
 
-自动发布博客到Jekyll/Octopress站点。
+自动发布Jekyll/Octopress博客到GitHub/FarBox等。
 
 程序代码文件高亮显示。
 
@@ -240,6 +240,15 @@ File -> Import Notes...，选择jekyll或Octopress博客的_posts目录，即可
 jekyll/Octorpress用户可以把自己的_posts目录软链到上述目录。具体例子可以看我的文章：`使用MarkBook发布博客到Jekyll`__
 
 __ http://amoblin.farbox.com/2012/12/26/markbook-to-jekyll.html
+
+若要保留源文档而只将生成的HTML发布，请移步 这里_
+
+.. _这里: http://amoblin.puti.biz/2013/01/24/markbook-to-farbox.html
+
+发布到FarBox
+-------------
+
+http://amoblin.puti.biz/2013/01/24/markbook-to-farbox.html
 
 读书
 ******
