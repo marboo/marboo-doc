@@ -521,6 +521,12 @@ Marboo通过管道获取脚本的输出来做进一步加工，所以请确保�
 
 .. _Marboo的下载页: http://code.google.com/p/markbook/downloads/list
 
+Marboo在发布新版软件前会先更新用户手册，所以如果你想第一时间知道Marboo的动态的话，
+
+可以去 github上的marboo-doc项目_ ，点watch，这样有新的版本发布，你就会收到邮件啦。
+
+.. _github上的marboo-doc项目: https://github.com/marboo/marboo-doc
+
 TODO
 ====
 
