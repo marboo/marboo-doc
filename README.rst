@@ -17,9 +17,14 @@ Marboo用户手册(|version|)
 
 欢迎您使用Marboo，目前版本为 |version|
 
-如果本手册中图片不能显示，请检查软件是否为最新版本（更新本软件_ ）
+查看新增了什么功能： https://github.com/marboo/marboo-doc/commits/master
 
-如果是最新版本仍出现上述问题，请联系 amoblin@gmail.com
+也可以在本地执行下面的操作：
+
+.. code-block:: console
+
+    $ cd ~/.marboo/source/MyNotes.localized/marboo-doc
+    $ git log -p
 
 Marboo是什么？
 ================
@@ -100,6 +105,11 @@ __ http://amoblin.marboo.biz/2012/12/25/MarkBook-release.html
 
 .. _`Marboo Gallery`: http://marboo.biz/gallery/
 
+本地化支持
+***********
+
+Marboo目前支持简体中文和英文。
+
 笔记管理
 **********
 
@@ -169,6 +179,15 @@ __ http://amoblin.marboo.biz/2012/12/25/MarkBook-release.html
 -----------
 
 双击左栏目录，会在Finder中显示该目录，然后创建文件夹即可，注意须遵循 三层目录规范_
+
+自动化操作
+------------
+
+从MarBoo 0.4开始，增加了一个按钮 |make| ,点击它会递归向上查找Makefile或Rakefile文件，然后执行。
+
+.. |make| image:: /media/images/marboo/marboo-icon-make.png
+    :width: 25
+    :height: 25
 
 Marboo偏好设置
 ******************
@@ -263,16 +282,11 @@ __ http://amoblin.marboo.biz/2012/12/26/markbook-to-jekyll.html
 一键发布博客
 --------------
 
-从MarBoo 0.4开始，增加了一个按钮 |make| ,点击它会递归向上查找Makefile或Rakefile文件，然后执行。
-
 把jekyll生成html的命令和git推送的命令都写到Makefile或Rakefile里，放在博客目录下，这样发布博客是不是很方便了呢？
 
 用Marboo发布博客，就这么简单，详情点击 这里_
 
 .. _这里: http://amoblin.puti.biz/2013/01/24/markbook-to-farbox.html
-.. |make| image:: /media/images/marboo/marboo-icon-make.png
-    :width: 25
-    :height: 25
 
 发布到FarBox
 -------------
