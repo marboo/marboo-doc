@@ -29,30 +29,311 @@ Marboo用户手册(|version|)
 Marboo是什么？
 ================
 
-Marboo是用来管理置标语言文档及其相关资源的，内置支持格式有如下几种：
+Marboo原名叫MarkBook，初衷是用来管理置标语言文档及其相关资源的。
 
-* reStructuredText
-* Markdown
-* HTML (use `twitter bootstrap`_)
-* CSS
-* JavaScript
-* PNG, JPG, GIF等图片格式。
-* SHELL脚本。
-* Pygments支持的程序文件（语法高亮显示）。
+但随着MarkBook的迅速发展，MarkBook不是仅能够管理置标语言，而是管理所有的程序语言。
 
-通过 `增加笔记格式`_ 可以支持任意一种置标语言，包括但不限于：
+所以从0.4.1版开始，MarkBook改名为Marboo。
+
+Marboo将文档和程序抽象为如下３步：
+
+#. 输入 (markdown等置标语言文档、python等脚本语言文件、c等编译语言源程序)
+#. 处理 (markdown的perl脚本、python脚本的python命令、c的gcc命令)
+#. 输出 (markdown等置标语言的HTML输出，python等脚本的执行结果，c等源文件的编译执行结果)
+
+可以看出，上述３步中的内容有一个共同特点：都是文本类型。
+
+只要是文本类型，那么就好管理了。大致来说，文本内容分３类：
+
+* 将内容语法高亮显示的
+* 直接显示内容的
+* 作为HTML显示内容的
+
+比如，一个python脚本，内容如下：
+
+.. code-block:: python
+
+    #!/usr/bin/python
+    # -*- coding:utf-8 -*-
+    import sys
+    print "你好"
+    print '<a href="http://marboo.biz">marboo主页</a>'
+
+作为输入，它是一个python脚本文件，可以通过上述语法高亮来显示内容。
+
+处理脚本就很简单了：
+
+.. code-block:: sh
+
+    #!/bin/sh
+    python $1
+
+简单地将python脚本执行即可。这是一个shell脚本，通过语法高亮来显示。
+
+输出结果是这样：
+
+.. code-block:: console
+
+    你好
+    <a href="http://marboo.biz">marboo主页</a>
+
+使用语法高亮后是这样：
+
+.. code-block:: html
+
+    你好
+    <a href="http://marboo.biz">marboo主页</a>
+
+而作为HTML内容来显示的话，是这样的：
+
+你好 marboo_
+
+.. _marboo: http://marboo.biz
+
+这里有上述示例的演示视频：http://v.youku.com/v_show/id_XNTExMjk0MTg0.html
+
+MarkBook -> Marboo：更轻了，更薄了，功能更强大了。
+
+Marboo中，对这３步进行自动化管理：
+
+自动初始化内容
+***************
+
+在 media/file_types目录下，定义了各种文件类型的初始化模板，在创建该类型文件的时候，
+会复制一份，并且自动添加上标题名(从文件名取)，创建时间。
+
+自定义处理过程
+****************
+
+在 media/bin下，定义了各种文件类型的转换脚本，当在中栏选择一个文件时，会执行对应的
+转换脚本来进行处理，将处理结果在右栏呈现。
+
+自定义输出样式
+***************
+
+为了使输出结果更美观，Marboo在 media/templates模板下为您提供了输出结果的包装。
+
+在中栏选择文件的时候，除了执行转换脚本意外，在最后呈现的时候，会去　templates
+下找对应的模板文件，找到的话会将输出内容嵌套在模板中。
+
+Pygmentize支持
+***************
+
+对文本文件而言，语法高亮是最漂亮的外衣。Marboo对所有文本文件提供了Pygmentize语法
+高亮支持。
+
+简单的对应关系
+**************
+
+文件和初始化文件、转换脚本、输出模板之间是通过后缀名来关联的。比如：
+
+对new.md文件而言：
+
+* 初始化文件为：default.init.md
+* 转换脚本为：md.sh
+* 输出模板为：md.template.html
+
+对new.py而言：
+
+* 初始化文件为：default.init.py
+* 转换脚本为：py.sh
+* 输出模板为：py.template.html
+
+细粒度控制
+**********
+
+同一种文件类型可能使用不同的处理过程，Marboo通过二级后缀来解决。
+
+对new.gallery.py而言：
+
+* 初始化文件为：gallery.init.py
+* 转换脚本为：gallery.py.sh
+* 输出模板为：gallery.py.template.html
+
+而对new.sc.py而言：
+
+* 初始化文件为：sc.init.py
+* 转换脚本为：sc.py.sh
+* 输出模板为：sc.py.template.html
+
+映射文件优先级
+****************
+
+某类型的文件可能找不到对应的初始化文件、转换脚本或输出模板，Marboo会按照特定的
+优先级顺序去寻找。举例如下：
+
+对new.gallery.py而言，
+
+初始化文件的寻找顺序
+---------------------
+
+#. gallery.init.py
+#. default.init.py
+#. Marboo默认模板(初始化内容只有文件名和创建时间)
+
+转换脚本的寻找顺序
+-------------------
+
+#. gallery.py.sh
+#. gallery.sh
+#. py.sh
+#. Marboo默认转换脚本
+
+Marboo默认转换脚本稍微复杂一些
+
+(根据UTI来判断，image类型的生成一个html页面，text类型的使用pygmentize语法高亮显示)
+
+输出模板的寻找顺序
+--------------------
+
+#. gallery.py.template.html
+#. gallery.template.html
+#. py.template.html
+#. marboo.template.html
+
+内置markdown等置标语言支持
+***************************
+
+Marboo首先是一个个人笔记管理应用，所以内置Markdown和reStructuredText的支持。
+
+md格式
+-------
+
+初始化文件（内容在/media/file_types/default.init.md）：
+
+.. code-block:: markdown
+
+    # %@
+    <!-- 
+        modify /media/file_types/default.md to change the init content of *.md files.
+    -->
+
+    %@
+
+其中有两个参数，用 %@ 表示。
+
+* 第１个代表文件名
+* 第２个代表创建时间
+
+转换脚本： Marboo内置的markdown脚本(perl脚本)。
+
+输出模板：/media/templates/marboo.template.html (根据 输出模板的寻找顺序_ )
+
+输出模板参数统一只有一个，内容就是转化脚本的输出内容。
+
+rst格式
+----------
+
+初始化文件（内容在/media/file_types/default.init.rst）：
+
+参数是4个：
+
+* 第１个代表文件名
+* 第２个代表创建时间
+
+转换脚本： Marboo内置的rst2html.py。
+
+输出模板：无。（rst比较特殊，直接输出全部html）
+
+.. code-block:: rst
+
+    %@
+    %@
+    %@
+
+    .. modify /media/file_types/default.rst to change the init content of *.rst files.
+    .. Author: your_name 
+    .. title:: this is the real title in Jekyll.
+    .. |date| date:: %@
+    .. publish:: NO
+
+一共4个参数。
+
+* 第2个参数是笔记名
+* 第1个和第3个是根据笔记名计算出来的 ‘=’ (RST语法要求)
+* 第4个参数是当前日期，主要用于生成jekyll格式的文件名。
+
+html格式
+-----------
+
+初始化文件（内容在/media/file_types/default.init.html）：
+
+看初始化文件会发现，默认html使用了 `twitter bootstrap`_ 框架。
+
+参数有3个：
+
+* 第1个是笔记名(title标签用)
+* 第2个是创建时间
+* 第3个还是笔记名(h1标签用)。
+
+转换脚本：使用系统cat命令，原样输出。
+
+输出模板：html.template.html，只有１行：
+
+.. code-block:: html
+
+    %@
+
+其他格式支持
+**************
+
+除了markdown，rst，html以外，还支持如下格式：
+
+CSS
+-----
+
+使用 sc模板_ ，语法高亮
+
+JavaScript
+-----------
+
+ (使用 sc模板_ ，语法高亮)
+
+image图片
+---------
+
+PNG, JPG, GIF等图片格式。
+
+
+SHELL脚本
+----------
+
+可以用来执行 git操作之类的。
+
+python脚本
+-----------
+
+系统自带的 浏览图片_ 插件。
+
+C
+---
+
+其他Pygments支持的程序文件
+---------------------------
+
+默认语法高亮显示。
+
+通过扩展支持任意格式文本
+-------------------------
+
+通过 `增加笔记格式`_ 可以支持任意一种语言(不仅仅是置标语言)，包括但不限于：
 
 * AsciiDoc
 * Wiki
 * TextTile
+* Ruby
+* Erlang
 
 此外，还通过管理CSS和图片来实现Theme样式。
 
 .. _`twitter bootstrap`: http://twitter.github.com/bootstrap/
-  
-通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织Markup文件，实时更新显示HTML输出页面。
 
-自动发布Jekyll/Octopress博客到GitHub/FarBox等。
+简洁的用户界面
+***************
+  
+通过像类似Sparrow/Reeder/Evernote的三栏式界面来管理组织文件，实时反馈文件的变化。
+
+.. 自动发布Jekyll/Octopress博客到GitHub/FarBox等。
 
 创作理念
 =========
@@ -170,29 +451,10 @@ __ http://amoblin.marboo.biz/2012/12/25/MarkBook-release.html
 
 有时中栏缩略图可能显示为空白，或者是旧主题，这时可以右键点击缩略图，选 “刷新”。
 
-**使用模板**
----------------
-
-Marboo自带了２个模板：sc模板和poem模板。
-
-sc模板是输出源代码(source code)的。因为默认的rst，md，html，Marboo是输出生成的HTML页面的。
-
-当我们需要像看python代码一样看md文件时，就可以用sc模板。
-
-在markdown文件中使用sc模板后，输出的不是生成的HTML页面，而是markdown源文件的高亮显示。
-
-在markdown文件中使用poem模板后，会使用pome模板定义的样式来显示生成的HTML页面。
-
-要在md文件中使用模板，将文件名由*.md改为*.sc.md或*.poem.md即可。
-
-sc模板支持的文件有：md, rst, html。
-
-poem模板支持的文件有：md。
-
 增加笔记本
 -----------
 
-双击左栏目录，会在Finder中显示该目录，然后创建文件夹即可，注意须遵循 三层目录规范_
+双击左栏目录，会在Finder中显示该目录，然后创建文件夹即可。
 
 自动化操作
 ------------
@@ -230,6 +492,9 @@ Marboo偏好设置
     :width: 25
     :height: 25
 
+图片管理
+********
+
 添加图片
 ---------
 
@@ -248,6 +513,59 @@ Marboo偏好设置
 #. 在中栏找到图片，右键选择"复制该文件路径"
 #. 粘贴到css或markdown文件中即可
 
+浏览图片
+---------
+
+Marboo 0.5版开始，内置了浏览图片的python脚本。
+
+Marboo目录树中任意包含图片的目录，Marboo会生成一个[dir_name].gallery.py的脚本。
+
+[dir_name].gallery.py脚本的标题为"[dir_name] gallery"，内容为该目录的所有图片。
+
+若要自定义浏览图片的样式，参见 修改输出模板_
+
+**使用模板**
+***************
+
+Marboo自带了如下一些模板：
+
+sc模板
+------
+
+sc模板是输出源代码(source code)的。因为默认的rst，md，html，Marboo是输出生成的HTML页面的。
+
+当我们需要像看python代码一样看md文件时，就可以用sc模板。
+
+在markdown文件中使用sc模板后，输出的不是生成的HTML页面，而是markdown源文件的高亮显示。
+
+run模板
+---------
+
+init模板
+---------
+
+template模板
+-------------
+
+alert模板
+-----------
+
+html.py模板
+------------
+
+txt.py模板
+----------
+
+gallery.py模板
+---------------
+
+用在 图片画廊展示_
+
+poem模板
+---------
+
+在markdown文件中使用poem模板后，会使用pome模板定义的样式来显示生成的HTML页面。
+
 Evernote相关
 ****************
 
@@ -264,7 +582,7 @@ Evernote相关
 图片画廊展示
 **************
 
-Marboo从0.4.1版开始增加了本地图片的画廊展示。Marboo下包含图片文件夹，会生成一个[folder name].gallery.html的文件。
+Marboo从0.4.1版开始增加了本地图片的画廊展示。Marboo下包含图片文件夹，会生成一个[folder name].gallery.py 的文件。
 
 从而将文件夹下的图片在一个WEB页面上展示出来。当然，可以通过css来个性化定制。
 
@@ -323,13 +641,11 @@ Pro Git
 
 Git学习的经典著作Pro Git托管在GitHub上，以Creative Commons Attribution-Non Commercial-Share Alike 3.0 license发布。
 
-amoblin整理了Pro Git的源文件，使其符合Marboo的 三层目录规范_ ，发布在GitHub上。
+amoblin整理了Pro Git的源文件，发布在GitHub上。
 
 .. code-block:: console
 
     $ git clone git@github.com:amoblin/progit-for-markbook.git ~/.marboo/source/progit-for-markbook
-
-重启Marboo后，就可以拜读Pro Git了。
 
 写WEB页面
 **********
@@ -363,34 +679,16 @@ Marboo的主目录为~/.Marboo，下面有2个目录：
 source目录
 ***********
 
-source目录下3层之内(包括第三层)的目录/文件都会被Marboo管理。
+source目录下的目录/文件都会被Marboo管理。
 
-三层目录规范
---------------
-
-source目录下有三层：
-
-第一层(MyNotes.localized)是笔记本库，一般也是一个git库(Marboo会忽略.git目录)。
-
-第二层(marboo-doc)是笔记本，用于存放各种分类的笔记。
-
-第三层(README.rst)是笔记(或图片文件夹)
-
-凡是符合上述要求的文件/目录都会被Marboo识别，source目录下的任何改变都会被Marboo捕获，从而更新用户界面。
-
-典型的3层目录树结构如下：
-
-.. code-block:: console
-
-    source
-    └── MyNotes.localized
-        └── marboo-doc
-            └── README.rst
+source目录下的任何改变都会被Marboo捕获，从而更新用户界面。
 
 media目录
 -----------
 
-source目录下默认有一个名为media的目录，Marboo的主题样式表、初始化文件模板等存放在这里。
+source目录下默认有一个名为media的目录，Marboo的核心文件都放在这里。
+
+主题样式表、初始化文件模板等存放在这里。
 
 .. code-block:: console
 
@@ -398,7 +696,7 @@ source目录下默认有一个名为media的目录，Marboo的主题样式表、
     bg-images  bin        css        file_types images     templates
 
 * bg-images     背景图片
-* bin           生成html的脚本
+* bin           转化脚本
 * css           存放主题样式表
 * file_types    存放初始化文件模板
 * images        存放笔记文档中的图片
@@ -423,7 +721,7 @@ Marboo通过CSS来控制笔记的显示效果。
 可以配置不同内容的CSS来生成不同的显示版式。相同显示版式的笔记使用相同的二级后缀名，比如
 
 * 我的日记.diary.md     版式为diary的markdown格式笔记
-* 志摩的诗.poetry.md    版式为poetry的markdown格式笔记
+* 志摩的诗.poem.md    版式为poem的markdown格式笔记
 
 这样虽然同为markdown文件，使用同一个HTML生成器，但是可以在初始化和最终生成HTML的时候，采取不同的行为。
 
@@ -437,53 +735,13 @@ Marboo通过CSS来控制笔记的显示效果。
 .. code-block:: console
 
     $ ls file_types
-    default.html default.md   default.rst  poetry.md
+    default.init.html default.init.md   default.init.rst  poem.init.md
 
 默认版式的笔记会使用名为default的同格式文件来初始化，而特定版式的笔记会使用对应版式名的同格式文件来初始化。
 
-比如新建一个笔记名为 new.peotry 的MarkDown格式笔记，会使用 poetry.md文件来初始化内容。
+比如新建一个笔记名为 new.peom 的MarkDown格式笔记，会使用 poem.init.md文件来初始化内容。
 
-通过在此目录添加文件"版式名.格式名"来增加版式。
-
-rst文件初始化
--------------
-
-默认的rst文件初始化内容如下
-
-.. code-block:: rst
-
-    %@
-    %@
-    %@
-
-    .. Author: your_name
-    .. title:: 可以是中文名
-    .. |date| date:: %@
-    .. publish:: NO
-
-参数用 "%@"表示， 一共4个参数。
-
-* 第2个参数是笔记名
-* 第1个和第3个是根据笔记名计算出来的 ‘=’ (RST语法要求)
-* 第4个参数是当前日期，主要用于生成jekyll格式的文件名。
-
-md文件初始化
--------------
-
-.. code-block:: markdown
-
-    %@
-    %@
-
-* 第1个参数是笔记名
-* 第2个是创建时间。
-
-html文件初始化
----------------
-
-这个比较长，不在这里写了，可以打开 media/file_types下的default.html来看。
-
-3个参数：第1个是笔记名(title标签用)，第2个是创建时间，第3个还是笔记名(h1标签用)。
+通过在此目录添加文件"版式名.init.格式名"来增加版式。
 
 增加笔记格式
 ***************
@@ -511,8 +769,8 @@ Marboo内置对markdown、rst的支持，但如果该目录下也有对应的HTM
 
 Marboo通过管道获取脚本的输出来做进一步加工，所以请确保脚本一定要输出内容。
 
-修改笔记HTML模板
-*****************
+修改输出模板
+*************
 
 在 media/templates 下保存文件输出模板。
 
@@ -520,61 +778,12 @@ Marboo通过管道获取脚本的输出来做进一步加工，所以请确保�
 
 默认有下面3个模板文件：
 
-* md.html
+* md.template.html
     \*.md 笔记的输出模板
-* poetry.md.html
-    \*.peotry.md 笔记的输出模板
-* pygmentize.html
-    程序文件的输出模板
-
-转换脚本的优先级
-*****************
-
-简单格式文件的转换
--------------------
-
-对于后缀为md的文件，首先在media/bin下寻找md.sh脚本，不存在时使用Marboo内置markdown脚本进行转换，表示如下：
-
-#. md.sh
-#. markdown(inside Marboo)
-
-后缀为rst，html的文件，和上述过程类似。
-
-带模板的格式文件的转换
-------------------------
-
-对于后缀为sc.md的文件，搜索过程如下：
-
-#. sc.md.sh
-#. sc.sh
-#. md.sh
-#. markdown(inside Marboo).
-
-后缀为sc.rst的文件，搜索过程如下：
-
-#. sc.rst.sh
-#. sc.sh
-#. rst.sh
-#. rst2html.py(inside Marboo).
-
-后缀为poem.md的文件，搜索顺序如下：
-
-#. poem.md.sh
-#. poem.sh
-#. md.sh
-#. markdown(inside Marboo).
-
-输出模板的优先级
-*****************
-
-和上述类似，举一个例子：
-
-对于后缀为poem.md，搜索顺序如下：
-
-#. poem.md.html
-#. poem.html
-#. md.html
-#. nothing(不加模板)
+* poem.md.template.html
+    \*.peom.md 笔记的输出模板
+* marboo.template.html
+    默认的输出模板
 
 .. 创建模板
 .. **********
@@ -599,22 +808,11 @@ Marboo通过管道获取脚本的输出来做进一步加工，所以请确保�
 更新本手册
 **********
 
-从v0.4.1开始，可以通过点击标题栏的 | |make| 按钮来获取更新。
+Marboo在发布新版软件前会先更新用户手册，所以如果你想第一时间知道Marboo的动态的话，
 
-本文所在目录为一个git仓库，远程仓库地址为：
+可以去 github上的marboo-doc项目_ ，点watch，这样有新的版本发布，你就会收到邮件啦。
 
-.. code-block:: console
-
-    $ cd ~/.marboo/source/MyNotes.localized/marboo-doc
-    $ git remote -v
-    origin	git@github.com:amoblin/marboo-doc.git (fetch)
-    origin	git@github.com:amoblin/marboo-doc.git (push)
-
-获取更新：
-
-.. code-block:: console
-
-    $ git pull
+.. _github上的marboo-doc项目: https://github.com/marboo/marboo-doc
 
 更新本软件
 ***********
@@ -622,12 +820,6 @@ Marboo通过管道获取脚本的输出来做进一步加工，所以请确保�
 菜单项：Marboo -> Check for updates..
 
 或者至 Marboo的首页 http://marboo.biz
-
-Marboo在发布新版软件前会先更新用户手册，所以如果你想第一时间知道Marboo的动态的话，
-
-可以去 github上的marboo-doc项目_ ，点watch，这样有新的版本发布，你就会收到邮件啦。
-
-.. _github上的marboo-doc项目: https://github.com/marboo/marboo-doc
 
 本地化支持
 ***********
