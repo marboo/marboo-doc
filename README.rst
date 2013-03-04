@@ -8,26 +8,31 @@ Marboo用户手册(|version|)
 .. title:: 欢迎使用Marboo
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.5
+.. |version| replace:: v0.6
 
 欢迎使用Marboo
 =================
 
-自0.4.1版起，MarkBook改名为Marboo，同时更换了全新的界面。看着还可以吧？
+.. 自0.4.1版起，MarkBook改名为Marboo，同时更换了全新的界面。看着还可以吧？
 
 欢迎您使用Marboo，目前版本为 |version|
 
-查看新增了什么功能： https://github.com/marboo/marboo-doc/commits/master
-
-也可以在本地执行下面的操作：
-
-.. code-block:: console
-
-    $ cd ~/.marboo/source/MyNotes.localized/marboo-doc
-    $ git log -p
+查看新增了什么功能：http://marboo.biz/release-notes/
 
 Marboo是什么？
-================
+===============
+
+Marboo能做什么？
+
+* 用喜欢的编辑器和格式来记笔记
+* 管理代码，执行代码
+* 通过扩展管理各种文件，比如zip文件等
+
+Marboo的目标：
+
+* 自由的写作
+* 方便的分享
+* 专业的发布
 
 Marboo原名叫MarkBook，初衷是用来管理置标语言文档及其相关资源的。
 
@@ -86,9 +91,9 @@ Marboo将文档和程序抽象为如下３步：
 
 而作为HTML内容来显示的话，是这样的：
 
-你好 marboo_
+你好 marboo主页_
 
-.. _marboo: http://marboo.biz
+.. _marboo主页: http://marboo.biz
 
 这里有上述示例的演示视频：http://v.youku.com/v_show/id_XNTExMjk0MTg0.html
 
@@ -99,14 +104,12 @@ Marboo中，对这３步进行自动化管理：
 自动初始化内容
 ***************
 
-在 media/file_types目录下，定义了各种文件类型的初始化模板，在创建该类型文件的时候，
-会复制一份，并且自动添加上标题名(从文件名取)，创建时间。
+在 media/file_init 目录下，定义了各种文件类型的初始化模板，在创建该类型文件的时候，会复制一份，并且自动添加上标题名(从文件名取)，创建时间。
 
 自定义处理过程
 ****************
 
-在 media/bin下，定义了各种文件类型的转换脚本，当在中栏选择一个文件时，会执行对应的
-转换脚本来进行处理，将处理结果在右栏呈现。
+在 media/bin 下，定义了各种文件类型的转换脚本，当在中栏选择一个文件时，会执行对应的转换脚本来进行处理，将处理结果在右栏呈现。
 
 自定义输出样式
 ***************
@@ -130,13 +133,13 @@ Pygmentize支持
 对new.md文件而言：
 
 * 初始化文件为：default.init.md
-* 转换脚本为：md.sh
+* 转换脚本为：md.convert.sh
 * 输出模板为：md.template.html
 
 对new.py而言：
 
 * 初始化文件为：default.init.py
-* 转换脚本为：py.sh
+* 转换脚本为：py.convert.sh
 * 输出模板为：py.template.html
 
 细粒度控制
@@ -147,13 +150,13 @@ Pygmentize支持
 对new.gallery.py而言：
 
 * 初始化文件为：gallery.init.py
-* 转换脚本为：gallery.py.sh
+* 转换脚本为：gallery.py.convert.sh
 * 输出模板为：gallery.py.template.html
 
 而对new.sc.py而言：
 
 * 初始化文件为：sc.init.py
-* 转换脚本为：sc.py.sh
+* 转换脚本为：sc.py.convert.sh
 * 输出模板为：sc.py.template.html
 
 映射文件优先级
@@ -174,9 +177,9 @@ Pygmentize支持
 转换脚本的寻找顺序
 -------------------
 
-#. gallery.py.sh
-#. gallery.sh
-#. py.sh
+#. gallery.py.convert.sh
+#. gallery.convert.sh
+#. py.convert.sh
 #. Marboo默认转换脚本
 
 Marboo默认转换脚本稍微复杂一些
@@ -199,13 +202,13 @@ Marboo首先是一个个人笔记管理应用，所以内置Markdown和reStructu
 md格式
 -------
 
-初始化文件（内容在/media/file_types/default.init.md）：
+初始化文件（内容在/media/file_init/default.init.md）：
 
 .. code-block:: markdown
 
     # %@
     <!-- 
-        modify /media/file_types/default.md to change the init content of *.md files.
+        modify /media/file_init/default.init.md to change the init content of *.md files.
     -->
 
     %@
@@ -224,7 +227,7 @@ md格式
 rst格式
 ----------
 
-初始化文件（内容在/media/file_types/default.init.rst）：
+初始化文件（内容在/media/file_init/default.init.rst）：
 
 参数是4个：
 
@@ -241,7 +244,7 @@ rst格式
     %@
     %@
 
-    .. modify /media/file_types/default.rst to change the init content of *.rst files.
+    .. modify /media/file_init/default.init.rst to change the init content of *.rst files.
     .. Author: your_name 
     .. title:: this is the real title in Jekyll.
     .. |date| date:: %@
@@ -256,7 +259,7 @@ rst格式
 html格式
 -----------
 
-初始化文件（内容在/media/file_types/default.init.html）：
+初始化文件（内容在/media/file_init/default.init.html）：
 
 看初始化文件会发现，默认html使用了 `twitter bootstrap`_ 框架。
 
@@ -392,7 +395,9 @@ __ http://amoblin.marboo.biz/2012/12/25/MarkBook-release.html
 新建笔记
 ---------
 
-键入 **Control + N** 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记类型（自定义类型见 管理代码_ ）。
+.. role:: kbd
+
+键入 :kbd:`Control + N` 或点击窗口上方标题栏中的图标 |new| 来新建一个笔记，新建时需要指定笔记类型（自定义类型见 管理代码_ ）。
 
 .. |new| image:: /media/images/marboo/marboo-icon-new.png
     :width: 25
@@ -470,6 +475,48 @@ Marboo自带了两个自动化操作的Makefile文件。
 一个在本目录下，是用来更新本手册的。
 
 另一个在media/test下，是用来做自动化测试的。
+
+Marboo Shell
+-------------
+
+从Marboo 0.6开始，在窗口右下角增加了Marboo Shell，这里你可以输入命令，就像你在Terminal中的操作一样。
+
+新建笔记的话， 命令行里输入：
+
+.. code-block:: console
+
+    $ touch first-note.md
+
+新建笔记时Marboo已经初始化了一些内容（其中有文件名和创建时间）：
+
+.. code-block:: console
+
+    $ cat first-note.md
+    # first-note
+    <!--
+        modify /media/file_init/default.init.md to change the init content of *.md files.
+    -->
+
+    2013-03-01 13:23:36
+    
+修改笔记:
+
+.. code-block:: console
+
+    $ open first-note.md
+
+删除笔记：
+
+.. code-block:: console
+
+    $ rm -f first-note.md
+
+所有的操作Marboo在界面上都会有反馈。
+
+最后看一下Marboo Shell记录的操作历史：
+
+.. image:: /media/images/marboo/marboo-terminal-demo.png
+    :width: 800
 
 Marboo偏好设置
 ******************
@@ -693,12 +740,11 @@ source目录下默认有一个名为media的目录，Marboo的核心文件都放
 .. code-block:: console
 
     $ ls media
-    bg-images  bin        css        file_types images     templates
+    bin        css        file_init images     templates
 
-* bg-images     背景图片
 * bin           转化脚本
 * css           存放主题样式表
-* file_types    存放初始化文件模板
+* file_init     存放初始化文件模板
 * images        存放笔记文档中的图片
 * templates     生成html后外嵌HTML模板
 
@@ -728,13 +774,13 @@ Marboo通过CSS来控制笔记的显示效果。
 修改初始化文件内容
 *******************
 
-在 新建笔记_ 时，输入笔记名，点击 ‘创建’ 后会生成一个笔记，打开笔记会发现里面已经有内容了，这些内容就是从 media/file_types目录下的文件初始化而来的。
+在 新建笔记_ 时，输入笔记名，点击 ‘创建’ 后会生成一个笔记，打开笔记会发现里面已经有内容了，这些内容就是从 media/file_init 目录下的文件初始化而来的。
 
 该目录结构如下：
 
 .. code-block:: console
 
-    $ ls file_types
+    $ ls file_init
     default.init.html default.init.md   default.init.rst  poem.init.md
 
 默认版式的笔记会使用名为default的同格式文件来初始化，而特定版式的笔记会使用对应版式名的同格式文件来初始化。
@@ -785,6 +831,54 @@ Marboo通过管道获取脚本的输出来做进一步加工，所以请确保�
 * marboo.template.html
     默认的输出模板
 
+Marboo插件
+===========
+
+在Marboo 0.6中，media下的目录结果做了一些变化：
+
+* file_types改为file_init
+* bin下的sh脚本增加了convert二级后缀
+
+Marboo 0.6开始，可以方便地制作自己的插件，也可以方便地安装下载的插件。
+
+制作插件
+**********
+
+新建一个类型为mbe.json的文件。作为例子，我新建一个my-extension.mbe.json
+
+Marboo内置mbe模板，所以我们可以看到文件内容如下：
+
+.. code-block:: json
+
+    {
+        "name": "my-extension.mbe",
+        "description": "",
+        "create date": "2013-03-02 15:34:36",
+        "author": "amoblin <amoblin@gmail.com>",
+        "files": [
+            "/media/bin/SUBTYPE.TYPE.sh",
+            "/media/file_init/SUBTYPE.init.TYPE",
+            "/media/templates/SUBTYPE.TYPE.template.html"
+        ],
+        "comment": [
+            "This file is created from ~/.marboo/source/media/bin/mbe.init.json",
+            "本文件由 ~/.marboo/source/media/bin/mbe.init.json 复制而来"
+        ]
+    }
+
+修改files对应的数组内容，改为你的插件的文件列表。
+
+保存即可，如果文件都存在的话，会出现一个my-extension.zip文件，这个就是你的插件了。
+
+安装插件
+***********
+
+下载上述zip格式的插件以后，放置到~/.marboo/source下任意目录，增加二级模板名install即可。
+
+比如my-extension.zip，将其改名为my-extension.install.zip。
+
+这时Marboo会安装该插件，安装完毕文件会改回原名。
+
 .. 创建模板
 .. **********
 
@@ -829,11 +923,6 @@ Marboo目前支持简体中文和英文。
 TODO
 ====
 
-open folder in terminal
-*************************
-
-在终端中打开文件夹，这样可以方便的进行一些操作。
-
 HTML转Markdown
 ****************
 
@@ -842,7 +931,7 @@ HTML转Markdown
 更多的版式
 ************
 
-谢谢你有耐心看到这里，说明我写的还不是太枯燥啊。Marboo刚接触WEB，不太熟悉。
+谢谢你有耐心看到这里，说明我写的还不是太枯燥啊。amoblin刚接触WEB，不太熟悉。
 
 如果你有漂亮的CSS版式模板，用来实现特定的排版，比如中文竖排，日记，画廊（现在的比较丑）等，同时又愿意给大家分享的话，
 
