@@ -8,7 +8,7 @@ Marboo用户手册(|version|)
 .. title:: 欢迎使用Marboo
 .. author: amoblin <amoblin@gmail.com>
 .. publish:: NO
-.. |version| replace:: v0.6
+.. |version| replace:: v0.7
 
 欢迎使用Marboo
 =================
@@ -25,7 +25,7 @@ Marboo是什么？
 Marboo能做什么？
 
 * 用喜欢的编辑器和格式来记笔记
-* 管理代码，执行代码
+* 管理代码，转换代码，执行代码
 * 通过扩展管理各种文件，比如zip文件等
 
 Marboo的目标：
@@ -40,19 +40,40 @@ Marboo原名叫MarkBook，初衷是用来管理置标语言文档及其相关资
 
 所以从0.4.1版开始，MarkBook改名为Marboo。
 
-Marboo将文档和程序抽象为如下３步：
+Marboo通过用户定义的转换规则，对源文件进行一系列转换，将最终结果呈献给用户显示。当源
+文件内容发生变化时，实时更新最终结果。
 
-#. 输入 (markdown等置标语言文档、python等脚本语言文件、c等编译语言源程序)
-#. 处理 (markdown的perl脚本、python脚本的python命令、c的gcc命令)
-#. 输出 (markdown等置标语言的HTML输出，python等脚本的执行结果，c等源文件的编译执行结果)
+通过定义不同的转换规则，实现不同的功能。比如，
 
-可以看出，上述３步中的内容有一个共同特点：都是文本类型。
+针对记笔记、写博客这个功能，可能的需求有：
 
-只要是文本类型，那么就好管理了。大致来说，文本内容分３类：
+- 我要写markdown文件，转换为HTML来显示；
+- 我要写reStructuredText文件，转换为HTML来显示
+- 我要写Org-mode文件，实时显示HTML。
 
-* 将内容语法高亮显示的
-* 直接显示内容的
-* 作为HTML显示内容的
+用转换规则来描述，就是：
+
+- 对于markdown文件，用md2html处理，然后输出；
+- 对于reStructuredText文件，用rst2html处理，然后输出；
+- 对于Org-mode文件，用org2html.el处理，然后输出；
+
+这里的转换比较简单，只有1层。下面看一个稍微复杂的。
+
+针对代码之间的转化功能，比如：
+
+- 我喜欢写coffee script，但希望实时看到生成的javascript的效果；
+- 我喜欢写Jade，希望实时看到生成的HTML的效果；
+- 我喜欢用Stylus，希望实时看到生成的css内容
+
+对应的转换规则就是：
+
+- 对于coffee script文件，先转换为javascript，然后语法高亮，最后输出。
+- 对于jade文件，先转为HTML文件，然后语法高亮，最后输出。
+- 对于stylus文件，先生成css，然后语法高亮，然后输出；
+
+这里使用了2层转换，第1层是生成代码，第2层是把生成的代码高亮。
+
+转换规则可以是各种各样的。
 
 比如，一个python脚本，内容如下：
 
@@ -64,25 +85,13 @@ Marboo将文档和程序抽象为如下３步：
     print "你好"
     print '<a href="http://marboo.biz">marboo主页</a>'
 
-作为输入，它是一个python脚本文件，可以通过上述语法高亮来显示内容。
+可能的转换有：
 
-处理脚本就很简单了：
+* 直接语法高亮输出(内容见上)
+* 执行该脚本，将输出结果语法高亮显示
+* 执行该脚本，将输出的HTML直接显示
 
-.. code-block:: sh
-
-    #!/bin/sh
-    python $1
-
-简单地将python脚本执行即可。这是一个shell脚本，通过语法高亮来显示。
-
-输出结果是这样：
-
-.. code-block:: console
-
-    你好
-    <a href="http://marboo.biz">marboo主页</a>
-
-使用语法高亮后是这样：
+使用语法高亮显示的内容如下：
 
 .. code-block:: html
 
@@ -97,27 +106,74 @@ Marboo将文档和程序抽象为如下３步：
 
 这里有上述示例的演示视频：http://v.youku.com/v_show/id_XNTExMjk0MTg0.html
 
-MarkBook -> Marboo：更轻了，更薄了，功能更强大了。
 
-Marboo中，对这３步进行自动化管理：
+从上面可以看出，文件就像水一样，流经各个处理管道，进行各种转换，最终显示给用户。
+
+下面说说Marboo的核心模型。
+
+核心模型
+========
+
+管道
+*****
+
+用过Linux的小伙伴应该不陌生，文件名或内容作为输入，被特定的命令处理，通过管道传递给
+下一个命令。通过命令的组合实现所需的功能。管道的优势在于功能模块化，需要时像搭积木一样
+组装即可。
+
+Marboo把文件的处理也用管道模型。源文件经过一系列处理转换，最终生成HTML，显示给用户。
+
+先定义转换脚本的内容，然后定义转换规则，即对符合条件的文件执行转换脚本。
+
+要达到此目的，需要做到2点：转换模块、组装序列。
+
+转换集
+********
+
+这是一个树状结构，顶部是mime类型，然后细化为具体的文件类型，每个节点都有转换模块，
+底层的可以使用父节点的转换模块。
+
+文件mime类型目前支持：text和image。
+
+text的转换模块有：语法高亮。
+
+image的转换模块有：用HTML来显示。
+
+text下细分为：
+
+md文件：md2html
+rst文件：rst2html
+等等。
+
+组装序列
+********
+
+对满足条件的文件，从该文件的转换集中选择一个进行转换，输出另一种格式的文件，可以重复
+循环下去，这些转换组成的就是转换序列。
+
+
+处理过程
+========
 
 自动初始化内容
 ***************
 
-在 media/file_init 目录下，定义了各种文件类型的初始化模板，在创建该类型文件的时候，会复制一份，并且自动添加上标题名(从文件名取)，创建时间。
+在 media/file_init 目录下，定义了各种文件类型的初始化模板，在创建该类型文件的时候，会复制一份，
+并且自动添加上标题名(从文件名取)，创建时间。
 
 自定义处理过程
 ****************
 
-在 media/bin 下，定义了各种文件类型的转换脚本，当在中栏选择一个文件时，会执行对应的转换脚本来进行处理，将处理结果在右栏呈现。
+在 `media/core.marboo.json` 中定义。
+
+当文件内容被修改时，Marboo会在 `core.marboo.json` 中寻找符合条件的处理过程来执行，将结果在
+右栏呈现。
 
 自定义输出样式
 ***************
 
-为了使输出结果更美观，Marboo在 media/templates模板下为您提供了输出结果的包装。
-
-在中栏选择文件的时候，除了执行转换脚本意外，在最后呈现的时候，会去　templates
-下找对应的模板文件，找到的话会将输出内容嵌套在模板中。
+`media/core.marboo.json` 中一般最后的处理是包装模板处理。模板文件一般存放在
+ media/templates 下。
 
 Pygmentize支持
 ***************
@@ -127,72 +183,6 @@ Pygmentize支持
 
 简单的对应关系
 **************
-
-文件和初始化文件、转换脚本、输出模板之间是通过后缀名来关联的。比如：
-
-对new.md文件而言：
-
-* 初始化文件为：default.init.md
-* 转换脚本为：md.convert.sh
-* 输出模板为：md.template.html
-
-对new.py而言：
-
-* 初始化文件为：default.init.py
-* 转换脚本为：py.convert.sh
-* 输出模板为：py.template.html
-
-细粒度控制
-**********
-
-同一种文件类型可能使用不同的处理过程，Marboo通过二级后缀来解决。
-
-对new.gallery.py而言：
-
-* 初始化文件为：gallery.init.py
-* 转换脚本为：gallery.py.convert.sh
-* 输出模板为：gallery.py.template.html
-
-而对new.sc.py而言：
-
-* 初始化文件为：sc.init.py
-* 转换脚本为：sc.py.convert.sh
-* 输出模板为：sc.py.template.html
-
-映射文件优先级
-****************
-
-某类型的文件可能找不到对应的初始化文件、转换脚本或输出模板，Marboo会按照特定的
-优先级顺序去寻找。举例如下：
-
-对new.gallery.py而言，
-
-初始化文件的寻找顺序
----------------------
-
-#. gallery.init.py
-#. default.init.py
-#. Marboo默认模板(初始化内容只有文件名和创建时间)
-
-转换脚本的寻找顺序
--------------------
-
-#. gallery.py.convert.sh
-#. gallery.convert.sh
-#. py.convert.sh
-#. Marboo默认转换脚本
-
-Marboo默认转换脚本稍微复杂一些
-
-(根据UTI来判断，image类型的生成一个html页面，text类型的使用pygmentize语法高亮显示)
-
-输出模板的寻找顺序
---------------------
-
-#. gallery.py.template.html
-#. gallery.template.html
-#. py.template.html
-#. marboo.template.html
 
 内置markdown等置标语言支持
 ***************************
@@ -220,7 +210,7 @@ md格式
 
 转换脚本： Marboo内置的markdown脚本(perl脚本)。
 
-输出模板：/media/templates/marboo.template.html (根据 输出模板的寻找顺序_ )
+输出模板：/media/templates/marboo.template.html
 
 输出模板参数统一只有一个，内容就是转化脚本的输出内容。
 
@@ -718,24 +708,16 @@ Marboo的 主页_ 就是借助它实现的，有图为证：
 Marboo目录组织
 =================
 
-Marboo的主目录为~/.Marboo，下面有2个目录：
+Marboo的根目录默认为 `~/.Marboo`
 
-* build         用来存放生成的HTML文件
-* source        源文件
+根目录下的目录/文件都会被Marboo管理，在左栏和中栏显示。
 
-source目录
-***********
-
-source目录下的目录/文件都会被Marboo管理。
-
-source目录下的任何改变都会被Marboo捕获，从而更新用户界面。
+根目录下的任何改变都会被Marboo捕获，从而更新右栏用户界面。
 
 media目录
------------
+*********
 
 source目录下默认有一个名为media的目录，Marboo的核心文件都放在这里。
-
-主题样式表、初始化文件模板等存放在这里。
 
 .. code-block:: console
 
@@ -747,15 +729,9 @@ source目录下默认有一个名为media的目录，Marboo的核心文件都放
 * file_init     存放初始化文件模板
 * images        存放笔记文档中的图片
 * templates     生成html后外嵌HTML模板
+* core.marboo.json  核心配置文件
 
 其中 bin/mkldir 是用来创建本地化目录的脚本，上面的MyNotes.localized正是用此创建。(参看 Mac下创建本地化目录_)
-
-build目录
-**********
-
-存放source目录生成的HTML等文件，结构上基本和source保持一致，但多出来一个bootstrap目录。
-
-这个bootstrap就是著名的twitter bootstrap，Marboo在引入HTML笔记支持时选择了twitter bootstrap。
 
 .. _Mac下创建本地化目录: http://amoblin.marboo.biz/2013/01/10/create-localized-directory-on-os-x.html
 
