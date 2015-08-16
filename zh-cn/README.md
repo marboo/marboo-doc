@@ -8,3 +8,5 @@
 这是用户指南中文版。
 
 在线阅读：<http://amoblin.gitbooks.io/marboo-guide/content/zh-cn/index.html>
+
+GitHub地址：<https://github.com/marboo/marboo-doc>

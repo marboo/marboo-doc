@@ -8,3 +8,5 @@
 This is the User Guide in English.
 
 Read Online: <http://amoblin.gitbooks.io/marboo-guide/content/en/index.html>
+
+Source at GitHub: <https://github.com/marboo/marboo-doc>
