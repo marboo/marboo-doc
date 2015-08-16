@@ -12,6 +12,10 @@ task :default do |t|
   sh "gitbook epub"
 end
 
+task :update do |t|
+  sh "git pull --unshallow"
+end
+
 task :clean do |t|
   sh "find . -name .DS_Store|xargs rm -f"
 end
