@@ -7,6 +7,4 @@
 
 这是用户指南中文版。
 
-在线阅读：<http://amoblin.gitbooks.io/marboo-guide/content/zh-cn/index.html>
-
-GitHub地址：<https://github.com/marboo/marboo-doc>
+本指南使用GitBook生成，源文件托管在GitHub上。GitHub地址：<https://github.com/marboo/marboo-doc>
