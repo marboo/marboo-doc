@@ -6,3 +6,5 @@
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建 -->
 
 This is the User Guide in English.
+
+Read Online: <http://amoblin.gitbooks.io/marboo-guide/content/en/index.html>
