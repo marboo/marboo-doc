@@ -26,7 +26,7 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
     "folder_viewer": "Terminal",
 ```
 
-保存即生效。使用o或双击目录时就会使用新设定的目录浏览器来打开了。当焦点在左栏时，Marboo左下角会显示设定的目录浏览器的图标。
+保存即生效。使用<kbd>o</kbd>或双击目录时就会使用新设定的目录浏览器来打开了。当焦点在左栏时，Marboo左下角会显示设定的目录浏览器的图标。
 
-另外也内置了快捷键 **t** 来使用Terminal打开当前目录，方便终端用户。
+另外也内置了快捷键 <kbd>t</kbd> 来使用Terminal打开当前目录，方便终端用户。
 

@@ -5,8 +5,8 @@
 ## Global shortcut
 | Function | Shortcut |
 |---------------|------------------|
-| Create Note | **Command + n** |
-| Toggle Lock View  | **Command + l**     |
+| Create Note | <kbd>Command + n</kbd> |
+| Toggle Lock View  | <kbd>Command + l</kbd>     |
 | Backward | b |
 | Forward | f |
 | next item | j |

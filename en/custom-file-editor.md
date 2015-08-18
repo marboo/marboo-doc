@@ -43,7 +43,7 @@ once saved, the config will be updated.
 
 If you want to config by the file attributes, then you must config the *rules* key in **marboo_config.json**.
 
-For example, if you want to use Emacs to open *\*.md* files, use MacVim to open *\*.mkd* files, then config as following:
+For example, if you want to use Emacs to open **\*.md** files, use MacVim to open **\*.mkd** files, then config as following:
 
 ```json
     "rules": [{

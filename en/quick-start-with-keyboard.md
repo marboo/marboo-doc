@@ -7,13 +7,13 @@
 
 # Create Note
 
-Enter **⌘ n**, which is press **Command** and **n** at the same time.
+Enter <kbd>⌘ n</kbd>, which is press <kbd>Command</kbd> and <kbd>n</kbd> at the same time.
 
 # Edit Note
 
-1. Enter **h/l** to focus the middle column, then the external file editor app icon will show in the status bar at the bottom as following
-2. Enter  **j/k** to choose the target file
-3. Enter **o** to edit the target file with the binding editor 
+1. Enter <kbd>h/l</kbd> to focus the middle column, then the external file editor app icon will show in the status bar at the bottom as following
+2. Enter  <kbd>j/k</kbd> to choose the target file
+3. Enter <kbd>o</kbd> to edit the target file with the binding editor 
 
 ![](.images/statusbar_2.png)
 
@@ -23,11 +23,11 @@ The right view will update the content once the file is saved in editor.
 
 # Create Folder
 
-1. Enter **h/l** to move the focus to the left column, then the external folder viewer app icon will show in the status bar as following
-2. Enter **j/k** to choose the target directory.
-3. Enter **Space** to fold/unfold the directory.
+1. Enter <kbd>h/l</kbd> to move the focus to the left column, then the external folder viewer app icon will show in the status bar as following
+2. Enter <kbd>j/k</kbd> to choose the target directory.
+3. Enter <kbd>Space</kbd> to fold/unfold the directory.
 4. Repeat Step 2 and Step 3 to select the target directory.
-5. Enter **o** to open Finder or enter **t** to open Terminal.
+5. Enter <kbd>o</kbd> to open Finder or enter <kbd>t</kbd> to open Terminal.
 6. create directory with Finder or Terminal. Marboo will update the directory structure.
 
 If the directory is not appear in Marboo, fold and unfold the parent directory or restart Marboo.
@@ -37,30 +37,30 @@ If the directory is not appear in Marboo, fold and unfold the parent directory o
 
 # Preview Note in Web Browser
 
-enter **h/l** to move focus to the right column, then the external web browser app icon will show in the status bar, then enter **o**
+enter <kbd>h/l</kbd> to move focus to the right column, then the external web browser app icon will show in the status bar, then enter <kbd>o</kbd>
 
 ![](.images/statusbar_3.png)
 
 # Delete Note
 
-1. Enter **h/l** to focus the middle column, then the external file editor app icon will show in the status bar at the bottom
-2. Enter  **j/k** to choose the target file
-3. Enter *delete* key，then enter *retur* key to confirm.
+1. Enter <kbd>h/l</kbd> to focus the middle column, then the external file editor app icon will show in the status bar at the bottom
+2. Enter  <kbd>j/k</kbd> to choose the target file
+3. Enter <kbd>delete</kbd> key，then enter <kbd>return</kbd> key to confirm.
 
 # Delete Directory
 
-1. Enter **h/l** to move the focus to the left column, then the external folder viewer app icon will show in the status bar as following
-2. Enter **j/k** to choose the target directory.
-3. Enter **Space** to fold/unfold the directory.
+1. Enter <kbd>h/l</kbd> to move the focus to the left column, then the external folder viewer app icon will show in the status bar as following
+2. Enter <kbd>j/k</kbd> to choose the target directory.
+3. Enter <kbd>Space</kbd> to fold/unfold the directory.
 4. Repeat Step 2 and Step 3 to select the target directory.
-5. Enter **o** to open Finder or enter **t** to open Terminal.
+5. Enter <kbd>o</kbd> to open Finder or enter <kbd>t</kbd> to open Terminal.
 6. Delete target directory with Finder or Terminal. Marboo will update the directory structure.
 
 If the directory is still in Marboo, fold and unfold the parent directory or restart Marboo.
 
 # Navigation
 
-enter **b** to view the previous file，**f** to view the next file in navigation history.
+enter <kbd>b</kbd> to view the previous file，<kbd>f</kbd> to view the next file in navigation history.
 
 # More Help
 

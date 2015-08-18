@@ -29,5 +29,5 @@ in the line contains the folder viewer which you want to sue, remove the number 
 
 save the file, and the config will be updated.
 
-BTW, you can enter **t** to open Terminal with current directory, useful for terminal user.
+BTW, you can enter <kbd>t</kbd> to open Terminal with current directory, useful for terminal user.
 

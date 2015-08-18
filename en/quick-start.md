@@ -16,7 +16,7 @@ Right click the file, then select "Open in Web Browser" to browse with the exter
 
 # Delete Note
 
-Right click the file, then select “Delete Note”  or enter **delete** key，then click “OK” to confirm.
+Right click the file, then select “Delete Note”  or enter <kbd>delete</kbd> key，then click “OK” to confirm.
 
 # Delete Directory
 
