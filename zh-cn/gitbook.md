@@ -74,3 +74,7 @@
     "server": "GitBook"
 }
 ```
+
+效果如下：
+
+![](.images/marboo-gitbook.png)

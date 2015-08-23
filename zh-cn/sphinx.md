@@ -65,3 +65,7 @@
     }
 ],
 ```
+
+效果如下：
+
+![](.images/marboo-sphinx.png)

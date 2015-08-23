@@ -50,3 +50,7 @@
     "server": "Gollum"
 }
 ```
+
+效果如下：
+
+![](.images/marboo-gollum.png)

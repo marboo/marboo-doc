@@ -60,3 +60,7 @@
     "server": "VimWiki"
 }
 ```
+
+效果如下：
+
+![](.images/marboo-vimwiki.png)
