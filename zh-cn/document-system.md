@@ -8,4 +8,8 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
-目前Marboo支持的文档系统有：GitBook、Sphinx、VimWiki、Gollum、nanoc。
+目前Marboo支持的文档系统有：GitBook、Sphinx、VimWiki、Gollum。
+
+这里收集了一些开源的文档：https://github.com/marboo/CCBooks
+
+可以直接 git clone 下来在Marboo中离线阅读、协作写作等。
