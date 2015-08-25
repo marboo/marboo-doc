@@ -15,6 +15,8 @@
 
 打开index.wiki文件，输入 :vimwiki2allhtml 来生成HTML文件。
 
+如果没有安装vimwik，请参考文末的方法来安装。
+
 ## 配置路径
 
 打开自定义配置文件，找到如下内容：
@@ -64,3 +66,16 @@
 效果如下：
 
 ![](.images/marboo-vimwiki.png)
+
+---
+
+如果没有安装VimWiki的话，使用下面的方法来安装。
+
+# 安装VimWiki
+
+下载vba： http://code.google.com/p/vimwiki/downloads/list
+
+使用 Vim 打开 **vimwiki.vba** ，然后执行 `:so % `
+
+详细参考： [用 vimwiki 搭建你自己的维基世界 - 丘迟](http://wiki.ktmud.com/tips/vim/vimwiki-guide.html)
+

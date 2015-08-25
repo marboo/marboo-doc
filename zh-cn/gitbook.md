@@ -13,7 +13,7 @@
 
 如果已经生成了HTML，请略过这一步。
 
-打开终端，进入GitBook文档所在目录，输入 `gitbook build` 回车运行。
+打开终端，进入GitBook文档所在目录，输入 `gitbook build` 回车运行。如果没有 `gitbook`命令，参考文末的介绍来安装gitbook。
 
 要确保运行成功，生成了需要的HTML文件。
 
@@ -78,3 +78,23 @@
 效果如下：
 
 ![](.images/marboo-gitbook.png)
+
+---
+
+如果没有安装GitBook的话，参考下面。
+
+# 安装GitBook
+
+gitbook命令行工具是用node.js开发的，所以首先需要安装node.js环境，然后通过npm来安装gitbook。
+
+1. 安装node.js环境，请到 [nodejs](http://nodejs.org/download/) 官网进行下载安装。也可以直接使用Homebrew来安装：
+
+```sh
+brew install node
+```
+
+2. 安装gitbook
+
+```sh
+npm install -g gitbook-cli
+```

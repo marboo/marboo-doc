@@ -11,7 +11,7 @@
 
 ## 运行Gollum Server
 
-在终端下进入**Gollum Path**目录，执行 **gollum .** 来启动Gollum Server。
+在终端下进入**Gollum Path**目录，执行 `gollum .` 来启动Gollum Server。如果没有 `gollum` 命令，参考文末的方法来安装gollum。
 
 ## 配置路径
 
@@ -54,3 +54,15 @@
 效果如下：
 
 ![](.images/marboo-gollum.png)
+
+---
+
+如果没有安装Gollum的话，参考下面。
+
+# 安装Gollum
+
+Gollum是用Ruby开发的，直接通过gem来安装：
+
+```sh
+gem install gollum
+```

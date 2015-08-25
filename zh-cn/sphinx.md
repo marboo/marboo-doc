@@ -13,7 +13,7 @@
 
 如果已经生成了HTML，请略过这一步。
 
-打开终端，进入Sphinx文档所在目录，输入 `make html` 回车运行。
+打开终端，进入Sphinx文档所在目录，输入 `make html` 回车运行。如果没有 `sphinx-build`命令，参考文末的方法来安装sphinx。
 
 ## 配置路径
 
@@ -69,3 +69,15 @@
 效果如下：
 
 ![](.images/marboo-sphinx.png)
+
+---
+
+如果没有安装Sphinx的话，参考下面。
+
+# 安装Sphinx
+
+Sphinx是用Python开发的，直接通过pip来安装：
+
+```sh
+pip install -U sphinx
+```
