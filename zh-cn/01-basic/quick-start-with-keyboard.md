@@ -15,7 +15,7 @@
 2. 使用  <kbd>j/k</kbd> 来选中目标文件
 3. 键入快捷键 <kbd>o</kbd> 来打开编辑器编辑目标文件
 
-![](.images/statusbar_2.png)
+![](../.images/statusbar_2.png)
 
 # 预览笔记
 编辑器中保存文件后，右栏直接查看预览效果。预览内容是根据规则生成的HTML页面。
@@ -29,13 +29,13 @@
 5. 键入快捷键 <kbd>o</kbd> 以打开Finder，键入快捷键 <kbd>t</kbd> 以打开Terminal
 6. 在Finder或Terminal中新建文件夹，Marboo中即同步显示。
 
-![](.images/statusbar_1.png)
+![](../.images/statusbar_1.png)
 
 # 在浏览器中打开笔记预览
 
 使用 <kbd>h/l</kbd> 移动焦点到右栏（具体表现为Marboo底部状态栏显示的是浏览器图标，如下图）然后键入快捷键 <kbd>o</kbd>
 
-![](.images/statusbar_3.png)
+![](../.images/statusbar_3.png)
 
 # 删除笔记
 
@@ -49,12 +49,12 @@
 2. 使用  <kbd>j/k</kbd> 来选中目标文件夹
 3. 使用 <kbd>Space</kbd> 来切换文件夹折叠或展开
 4. 重复第 2，3操作来选中目标文件夹
-5. 键入快捷键 <kbd>o</kbd> 以打开Finder，键入快捷键 <kbd>t</kbd> 以打开Terminal
-6. 在打开的Finder中或Terminal中删除文件夹，Marboo中会同步删除。
+5. 键入快捷键 <kbd>delete</kbd> 来删除文件夹
 
 如果Marboo中没有更新的话，尝试将父文件夹折叠再打开或者重启Marboo即可。
 
 # 查看历史
+
 键入快捷键 <kbd>b</kbd> 来查看上一个预览的笔记，<kbd>f</kbd> 来查看下一个预览的笔记。
 
 # 更多帮助
