@@ -1,4 +1,4 @@
-# org-mode
+# Org-mode
 
 <!--
 create time: 2015-09-02 23:33:56
@@ -8,3 +8,6 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
+显示效果如下：
+
+![](../images/02/org-mode.png)

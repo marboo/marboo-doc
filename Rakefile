@@ -10,6 +10,7 @@
 task :default do |t|
   sh "gitbook build"
   sh "gitbook epub"
+  sh "gitbook pdf"
 end
 
 task :update do |t|
