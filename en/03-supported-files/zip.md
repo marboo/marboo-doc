@@ -1,11 +1,15 @@
-# 基本使用
+# zip
 
 <!--
-create time: 2015-09-02 23:14:08
+create time: 2015-09-02 23:35:26
 Author: amoblin
 
 This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.media/starts/default.md
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
-通过本章快速了解如何创建各种类型的笔记文件、通过外部编辑器修改笔记、在Marboo中实时预览等。
+显示效果如下：
+
+![](../images/02/zip.png)
+
+![](../images/02/tar.gz.png)

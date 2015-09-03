@@ -1,5 +1,5 @@
 # Create Note
-Click the button <img src=".images/1.png" width="10%"/> in middle colum to create new note.
+Click the button <img src="../images/1.png" width="10%"/> in middle colum to create new note.
 
 # Edit Note
 Double click the file name in middle column to edit note with external file editor.

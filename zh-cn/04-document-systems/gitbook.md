@@ -77,7 +77,7 @@
 
 效果如下：
 
-![](../.images/marboo-gitbook.png)
+![](../images/04/gitbook.png)
 
 ---
 

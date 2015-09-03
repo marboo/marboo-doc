@@ -68,7 +68,7 @@
 
 效果如下：
 
-![](../.images/marboo-sphinx.png)
+![](../images/04/sphinx.png)
 
 ---
 

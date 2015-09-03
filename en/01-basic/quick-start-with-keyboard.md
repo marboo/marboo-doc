@@ -15,7 +15,7 @@ Enter <kbd>⌘ n</kbd>, which is press <kbd>Command</kbd> and <kbd>n</kbd> at th
 2. Enter  <kbd>j/k</kbd> to choose the target file
 3. Enter <kbd>o</kbd> to edit the target file with the binding editor 
 
-![](.images/statusbar_2.png)
+![](../images/statusbar_2.png)
 
 # Preview Note
 
@@ -33,13 +33,13 @@ The right view will update the content once the file is saved in editor.
 If the directory is not appear in Marboo, fold and unfold the parent directory or restart Marboo.
 
 
-![](.images/statusbar_1.png)
+![](../images/statusbar_1.png)
 
 # Preview Note in Web Browser
 
 enter <kbd>h/l</kbd> to move focus to the right column, then the external web browser app icon will show in the status bar, then enter <kbd>o</kbd>
 
-![](.images/statusbar_3.png)
+![](../images/statusbar_3.png)
 
 # Delete Note
 

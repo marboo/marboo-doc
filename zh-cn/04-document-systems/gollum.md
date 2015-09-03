@@ -53,7 +53,7 @@
 
 效果如下：
 
-![](../.images/marboo-gollum.png)
+![](../images/04/gollum.png)
 
 ---
 

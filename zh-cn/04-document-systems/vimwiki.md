@@ -65,7 +65,7 @@
 
 效果如下：
 
-![](../.images/marboo-vimwiki.png)
+![](../images/04/vimwiki.png)
 
 ---
 

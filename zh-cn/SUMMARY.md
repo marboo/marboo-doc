@@ -1,5 +1,4 @@
 # Summary
-
 * [基本使用](01-basic/basic.md)
  * [快速上手](01-basic/quick-start.md)
  * [快速上手-纯键盘版](01-basic/quick-start-with-keyboard.md)
@@ -23,7 +22,6 @@
  * [Gollum文档设置](04-document-systems/gollum.md)
  * [Sphinx文档设置](04-document-systems/sphinx.md)
  * [VimWiki文档设置](04-document-systems/vimwiki.md)
- * [MKDocs文档设置](04-document-systems/mkdocs.md)
 * [自定义功能](05-custom-settings/custom.md)
  * [自定义文件编辑器](05-custom-settings/custom-file-editor.md)
  * [自定义目录浏览器](05-custom-settings/custom-folder-viewer.md)
@@ -31,5 +29,4 @@
  * [自定义新建笔记的类型列表](05-custom-settings/custom-create-note-window.md)
  * [自定义左栏系统文件夹显示](05-custom-settings/custom-left-column.md)
  * [其他自定义设置](05-custom-settings/custom-others.md)
-* [包](06-packages/packages.md)
 * [更多帮助](./contact-me.md)
