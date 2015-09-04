@@ -8,27 +8,15 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
-用户配置文件 **marboo_config.json** 中可以设置左栏的系统文件夹有：
+能够在用户配置文件(详见[5.1 配置文件介绍](./config-file.html))中设置如下系统文件夹：
 
 - 最近打开的
 - 配置文件
 
-若要在左栏显示**最近打开的**文件夹，可以在**marboo_config.json**中增加如下配置：
-
-```json
-    "show_recent_files_dir": true,
-```
-
-若要在左栏显示**配置文件**文件夹，可以在**marboo_config.json**中增加如下配置：
-
-```json
-    "show_media_dir": true,
-```
-    
-系统默认会显示 **最近打开的** 文件夹，隐藏 **配置文件** 文件夹：
+系统默认会隐藏 **配置文件** 文件夹，显示 **最近打开的** 文件夹，可通过修改行尾的 **true** 或 **false** 来控制文件夹的显示和隐藏：
 
 ```json
     "show_media_dir": false,
     "show_recent_files_dir": true,
 ```
-    
+

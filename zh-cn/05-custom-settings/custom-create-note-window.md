@@ -8,6 +8,7 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
+打开用户配置文件(详见[5.1 配置文件介绍](./config-file.html))，找到如下内容进行修改：
 
 ```json
   "comment": "设置新建笔记时的笔记类型列表",

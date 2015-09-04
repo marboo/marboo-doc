@@ -8,7 +8,7 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 本文件由 Marboo<http://marboo.io> 模板文件 $MARBOO_HOME/.media/starts/default.md 创建
 -->
 
-在自定义配置文件 **marboo_config.json** 中找到如下内容：
+打开用户配置文件(详见[5.1 配置文件介绍](./config-file.html))，找到如下内容：
 
 ```json
     "comment": "设置网页浏览器。Default代表默认浏览器，也可以设置已安装的浏览器如Google Chrome, Firefox等",
