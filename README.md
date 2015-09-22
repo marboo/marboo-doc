@@ -1,4 +1,6 @@
-This Guide is for Marboo v1.0
+This Guide is for [Marboo](http://marboo.io) v1.1
+
+Marboo at Mac App Store: https://itunes.apple.com/cn/app/marboo-pro/id1010557319?mt=12
 
 # 在线阅读(Read Online)
 
