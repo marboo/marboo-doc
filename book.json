@@ -2,11 +2,5 @@
     "gitbook": ">=2.0.0",
      "styles": {
          "website": "website.css"
-     },
-    "plugins": ["disqus"],
-    "pluginsConfig": {
-        "disqus": {
-            "shortName": "marboo-guide"
-        }
-    }
+     }
 }

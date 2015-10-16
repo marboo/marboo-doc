@@ -1,7 +1,7 @@
-# Marboo Pro 更新日志
+# Release Notes for Marboo Pro
 
 <!--
-create time: 2015-08-16 17:13:55
+create time: 2015-10-16 23:38:50
 Author: amoblin
 
 This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.media/starts/default.md

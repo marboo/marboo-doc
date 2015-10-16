@@ -29,5 +29,8 @@
  * [Custom Create Note Window](05-custom-settings/custom-create-note-window.md)
  * [Custom Left Column](05-custom-settings/custom-left-column.md)
  * [Custom Others](05-custom-settings/custom-others.md)
+* [Release Notes for Marboo Pro](./release-note.md)
+* [Release Notes for Marboo](./release-note-lite.md)
+* [Difference with Marboo and Marboo Pro](./marboo-pro.md)
 * [Contact me](./contact-me.md)
  
