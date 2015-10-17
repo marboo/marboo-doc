@@ -11,24 +11,24 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 
 |  功能点           | 普通版 | Pro版 |
 |-------------|-------|-------|
-| Markdown预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| reStructuredText预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| Org-mode预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| Textile预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| txt2tags预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 图片预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| CSV预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| PDF预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| ePub预览 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 自定义文件编辑器 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 自定义目录浏览器 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 自定义网页浏览器 | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 自定义预览样式    | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| 自定义文件转换器  | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
-| file:// 协议 | ×      | <i class="fa fa-check"/>      |
-| 拖拽添加文件（夹）   | ×      | <i class="fa fa-check"/>      |
-| 历史记录 | ×      | <i class="fa fa-check"/>      |
-| GitBook预览 | ×      | <i class="fa fa-check"/>      |
-| Sphinx预览 | ×      | <i class="fa fa-check"/>      |
-| VimWiki预览 | ×      | <i class="fa fa-check"/>      |
-| Gollum预览 | ×      | <i class="fa fa-check"/>      |
+| Markdown预览 | √      | √ |
+| reStructuredText预览 | √      | √ |
+| Org-mode预览 | √      | √ |
+| Textile预览 | √      | √ |
+| txt2tags预览 | √      | √ |
+| 图片预览 | √      | √ |
+| CSV预览 | √      | √ |
+| PDF预览 | √      | √ |
+| ePub预览 | √      | √ |
+| 自定义文件编辑器 | √      | √ |
+| 自定义目录浏览器 | √      | √ |
+| 自定义网页浏览器 | √      | √ |
+| 自定义预览样式    | √      | √ |
+| 自定义文件转换器  | √      | √ |
+| file:// 协议 | ×      | √ |
+| 拖拽添加文件（夹）   | ×    | √ |
+| 历史记录 | ×      | √ |
+| GitBook预览 | ×      | √ |
+| Sphinx预览 | ×      | √ |
+| VimWiki预览 | ×      | √ |
+| Gollum预览 | ×      | √ |
