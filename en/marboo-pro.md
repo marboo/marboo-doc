@@ -27,7 +27,7 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 | 自定义文件转换器  | <i class="fa fa-check"/>      | <i class="fa fa-check"/>      |
 | file:// 协议 | ×      | <i class="fa fa-check"/>      |
 | 拖拽添加文件（夹）   | ×      | <i class="fa fa-check"/>      |
-| 历史记录 | ×      | <i class="fa fa-check"/>      |
+| Breadcrumb | ×      | <i class="fa fa-check"/>      |
 | GitBook预览 | ×      | <i class="fa fa-check"/>      |
 | Sphinx预览 | ×      | <i class="fa fa-check"/>      |
 | VimWiki预览 | ×      | <i class="fa fa-check"/>      |
