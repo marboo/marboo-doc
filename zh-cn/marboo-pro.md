@@ -11,24 +11,24 @@ This file is created by Marboo<http://marboo.io> template file $MARBOO_HOME/.med
 
 |  功能点           | 普通版 | Pro版 |
 |-------------|-------|-------|
-| Markdown预览 | √      | √ |
-| reStructuredText预览 | √      | √ |
-| Org-mode预览 | √      | √ |
-| Textile预览 | √      | √ |
-| txt2tags预览 | √      | √ |
-| 图片预览 | √      | √ |
-| CSV预览 | √      | √ |
-| PDF预览 | √      | √ |
-| ePub预览 | √      | √ |
-| 自定义文件编辑器 | √      | √ |
-| 自定义目录浏览器 | √      | √ |
-| 自定义网页浏览器 | √      | √ |
-| 自定义预览样式    | √      | √ |
-| 自定义文件转换器  | √      | √ |
-| file:// 协议 | ×      | √ |
-| 拖拽添加文件（夹）   | ×    | √ |
-| 历史记录 | ×      | √ |
-| GitBook预览 | ×      | √ |
-| Sphinx预览 | ×      | √ |
-| VimWiki预览 | ×      | √ |
-| Gollum预览 | ×      | √ |
+| [Markdown预览](02-markup-languages/2.1 markdown.md) | √      | √ |
+| [reStructuredText预览](02-markup-languages/2.2 reStructuredText.md) | √      | √ |
+| [Org-mode预览](02-markup-languages/2.3 org-mode.md) | √      | √ |
+| [Textile预览](02-markup-languages/2.4 textile.md) | √      | √ |
+| [txt2tags预览](02-markup-languages/2.5 txt2tags.md) | √      | √ |
+| [图片预览](03-supported-files/3.6 images.md) | √      | √ |
+| [CSV预览](03-supported-files/3.5 csv.md) | √      | √ |
+| [PDF预览](03-supported-files/3.2 epub.md) | √      | √ |
+| [ePub预览](03-supported-files/3.3 pdf.md) | √      | √ |
+| [自定义文件编辑器](05-custom-settings/5.2 custom-file-editor.md) | √      | √ |
+| [自定义目录浏览器](05-custom-settings/5.3 custom-folder-viewer.md) | √      | √ |
+| [自定义网页浏览器](05-custom-settings/5.4 custom-web-browser.md) | √      | √ |
+| [自定义预览样式](05-custom-settings/5.8 custom-preview-style.md)    | √      | √ |
+| [自定义文件转换器](05-custom-settings/5.7 custom-file-convert.md)  | √      | √ |
+| [file:// 协议](01-basic/1.1 quick-start.md#file-protocol)     | ×      | √ |
+| [拖拽添加文件（夹）](01-basic/1.1 quick-start.md#add-folder)   | ×    | √ |
+| [面包屑穿梭](01-basic/1.1 quick-start-with-keyboard.md#history)    | ×      | √ |
+| [GitBook预览](04-document-generator-settings/4.1 gitbook.md) | ×      | √ |
+| [Sphinx预览](04-document-generator-settings/4.3 sphinx.md) | ×      | √ |
+| [VimWiki预览](04-document-generator-settings/4.4 vimwiki.md) | ×      | √ |
+| [Gollum预览](04-document-generator-settings/4.2 gollum.md) | ×      | √ |

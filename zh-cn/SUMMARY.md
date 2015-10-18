@@ -18,7 +18,7 @@
  * [CSV](03-supported-files/3.5 csv.md)
  * [Images](03-supported-files/3.6 images.md)
  * [Audio/Video](03-supported-files/3.7 audio-video.md)
-* [文档生成器设置](04-document-generator-settings/4. document-system.md)
+* [文档生成器支持](04-document-generator-settings/4. document-system.md)
  * [GitBook](04-document-generator-settings/4.1 gitbook.md)
  * [Gollum](04-document-generator-settings/4.2 gollum.md)
  * [Sphinx](04-document-generator-settings/4.3 sphinx.md)
