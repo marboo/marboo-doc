@@ -3,6 +3,7 @@
  * [快速上手](01-basic/1.1 quick-start.md)
  * [快速上手-纯键盘版](01-basic/1.2 quick-start-with-keyboard.md)
  * [快捷键](01-basic/1.3 keyboard-shortcut.md)
+ * [自动定位&&面包屑穿梭](01-basic/1.4 auto-locate.md)
 * [标记语言支持](02-markup-languages/2. markup-languages.md)
  * [Markdown](02-markup-languages/2.1 markdown.md)
  * [reStructured Text](02-markup-languages/2.2 reStructuredText.md)
